@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "GOZyrevNKxY=",
+  "dgSpecHash": "NevNra8I31s=",
   "success": true,
-  "projectFilePath": "C:\\Desarrollo\\TestResend\\TestResend\\TestResend.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Desarrollo\\TestResend\\TestResend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mario\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\8.0.19\\microsoft.aspnetcore.webutilities.8.0.19.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\microsoft.net.http.headers\\8.0.19\\microsoft.net.http.headers.8.0.19.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\resend\\0.1.6\\resend.0.1.6.nupkg.sha512",
+    "C:\\Users\\mario\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Desarrollo\\TestResend\\TestResend\\TestResend.csproj": {}
+    "C:\\Desarrollo\\TestResend\\TestResend.csproj": {}
   },
   "projects": {
-    "C:\\Desarrollo\\TestResend\\TestResend\\TestResend.csproj": {
+    "C:\\Desarrollo\\TestResend\\TestResend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Desarrollo\\TestResend\\TestResend\\TestResend.csproj",
+        "projectUniqueName": "C:\\Desarrollo\\TestResend\\TestResend.csproj",
         "projectName": "TestResend",
-        "projectPath": "C:\\Desarrollo\\TestResend\\TestResend\\TestResend.csproj",
+        "projectPath": "C:\\Desarrollo\\TestResend\\TestResend.csproj",
         "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
-        "outputPath": "C:\\Desarrollo\\TestResend\\TestResend\\obj\\",
+        "outputPath": "C:\\Desarrollo\\TestResend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -51,6 +51,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Resend": {
+              "target": "Package",
+              "version": "[0.1.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
