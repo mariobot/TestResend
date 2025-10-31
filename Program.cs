@@ -1,4 +1,6 @@
-﻿using TestResend.Components;
+﻿using Resend;
+using TestResend.Components;
+using TestResend.Services;
 
 namespace TestResend
 {
@@ -8,9 +10,26 @@ namespace TestResend
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Add configuration from user secrets
+            builder.Configuration.AddUserSecrets<Program>();
+
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            string apiKey = builder.Configuration["ResendApi:Key"] ?? string.Empty;
+
+            //Register Resend Client
+            builder.Services.AddOptions();
+            builder.Services.AddHttpClient<ResendClient>();
+            builder.Services.Configure<ResendClientOptions>(o =>
+            {
+                o.ApiToken = apiKey;
+            });
+            builder.Services.AddTransient<IResend, ResendClient>();
+
+            // Register Resend Email Service
+            builder.Services.AddTransient<ResendEmailService>();
 
             var app = builder.Build();
 
