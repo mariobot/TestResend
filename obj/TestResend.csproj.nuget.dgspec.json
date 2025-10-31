@@ -55,6 +55,10 @@
             "Resend": {
               "target": "Package",
               "version": "[0.1.6, )"
+            },
+            "sib_api_v3_sdk": {
+              "target": "Package",
+              "version": "[4.0.2, )"
             }
           },
           "imports": [

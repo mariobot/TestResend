@@ -18,6 +18,7 @@ namespace TestResend
                 .AddInteractiveServerComponents();
 
             string apiKey = builder.Configuration["ResendApi:Key"] ?? string.Empty;
+            string apiBravoKey = builder.Configuration["BravoApi:Key"] ?? string.Empty;
 
             //Register Resend Client
             builder.Services.AddOptions();

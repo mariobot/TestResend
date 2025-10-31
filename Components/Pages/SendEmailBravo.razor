@@ -1,0 +1,77 @@
+﻿@page "/SendEmailBravo"
+@using TestResend.Services
+
+@inject BravoEmailService bravoEmailService
+
+<h3>SendEmail with Bravo provider</h3>
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? "Email sent successfully!" : "Failed to send email.")
+    </div>
+}
+
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" AdditionalAttributes="@(new Dictionary<string, object> { ["name"] = "SendEmailForm" })">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="from" class="form-label">From:</label>
+        <InputText id="from" class="form-control" @bind-Value="emailModel.From" />
+    </div>
+    <div class="mb-3">
+        <label for="to" class="form-label">To:</label>
+        <InputText id="to" class="form-control" @bind-Value="emailModel.To" />
+    </div>
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject:</label>
+        <InputText id="subject" class="form-control" @bind-Value="emailModel.Subject" />
+    </div>
+    <div class="mb-3">
+        <label for="body" class="form-label">Body:</label>
+        <InputTextArea id="body" class="form-control" @bind-Value="emailModel.Body" />
+    </div>
+    <button type="button" @Onclick="SendEmailAsync" class="btn btn-primary">Send Test Email</button>
+</EditForm>
+
+<div>
+    <div class="active">
+        <p>@message</p>
+    </div>
+</div>
+
+@code {
+    private EmailModel emailModel = new();
+    private bool? success;
+    private string message = string.Empty;
+
+    public class EmailModel
+    {
+        public string From { get; set; } = "mariobot113@hotmail.com";
+        public string To { get; set; } = "mariobot113@hotmail.com";
+        public string Subject { get; set; } = "Bienvenido";
+        public string Body { get; set; } = "Bienvendo a la Plataforma TestResend";
+    }
+
+    private async Task SendEmailAsync()
+    {
+        try
+        {
+            await bravoEmailService.SendEmailAsync(
+                emailModel.From,
+                emailModel.To,
+                emailModel.Subject,
+                emailModel.Body
+            );
+            success = true;
+            message = "Email sent successfully.";
+        }
+        catch (Exception ex)
+        {   
+            message = ex.Message;
+            throw;
+        }
+        
+    }
+}
