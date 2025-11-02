@@ -11,7 +11,7 @@ namespace TestResend.Services
             _resend = resend;
         }
 
-        public async Task SendEmail(string to, string from, string subject, string body = null)
+        public async Task SendEmail(string to, string from, string subject, string? body = null)
         {
             var message = new EmailMessage();
             message.From = from;
