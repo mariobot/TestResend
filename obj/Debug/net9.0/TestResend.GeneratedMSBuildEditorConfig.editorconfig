@@ -32,12 +32,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Desarrollo/TestResend/Components/Pages/SendAttachment.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTZW5kQXR0YWNobWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo/TestResend/Components/Pages/SendBulk.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTZW5kQnVsay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Desarrollo/TestResend/Components/Pages/SendEmail.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTZW5kRW1haWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Desarrollo/TestResend/Components/Pages/SendEmailBravo.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTZW5kRW1haWxCcmF2by5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo/TestResend/Components/Pages/SendTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTZW5kVGVtcGxhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Desarrollo/TestResend/Components/Routes.razor]

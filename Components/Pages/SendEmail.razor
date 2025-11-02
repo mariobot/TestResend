@@ -11,7 +11,7 @@
     </div>
 }
 
-<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" AdditionalAttributes="@(new Dictionary<string, object> { ["name"] = "SendEmailForm" })">
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" FormName="SendEmailForm">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
@@ -31,7 +31,8 @@
         <label for="body" class="form-label">Body:</label>
         <InputTextArea id="body" class="form-control" @bind-Value="emailModel.Body" />
     </div>
-    <button type="button" @Onclick="SendEmailAsync" class="btn btn-primary">Send Test Email</button>
+    <button type="submit" class="btn btn-primary">Send Test Email</button>
+
 </EditForm>
 
 <div>
