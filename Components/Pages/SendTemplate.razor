@@ -1,0 +1,163 @@
+@page "/SendTemplate"
+@using TestResend.Services
+
+@inject BravoEmailServiceV4 bravoEmailService
+
+<h3>Send Templated Email</h3>
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? $"Email sent successfully! Message ID: {messageId}" : $"Failed to send email: {errorMessage}")
+    </div>
+}
+
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" FormName="SendTemplateForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="from" class="form-label">From:</label>
+        <InputText id="from" class="form-control" @bind-Value="emailModel.From" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="to" class="form-label">To:</label>
+        <InputText id="to" class="form-control" @bind-Value="emailModel.To" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="templateId" class="form-label">Template ID:</label>
+        <InputNumber id="templateId" class="form-control" @bind-Value="emailModel.TemplateId" />
+        <small class="text-muted">Enter your Brevo template ID</small>
+    </div>
+
+    <div class="mb-3">
+        <h5>Template Parameters</h5>
+        <p class="text-muted">Add key-value pairs for template variables</p>
+        
+        @foreach (var param in templateParameters)
+        {
+            <div class="row mb-2">
+                <div class="col-5">
+                    <input type="text" class="form-control" placeholder="Parameter name" 
+                           value="@param.Key" 
+                           @onchange="@(e => UpdateParameterKey(param.Key, e.Value?.ToString() ?? ""))" />
+                </div>
+                <div class="col-5">
+                    <input type="text" class="form-control" placeholder="Parameter value" 
+                           value="@param.Value" 
+                           @onchange="@(e => UpdateParameterValue(param.Key, e.Value?.ToString() ?? ""))" />
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger" @onclick="() => RemoveParameter(param.Key)">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        }
+        
+        <button type="button" class="btn btn-secondary btn-sm mt-2" @onclick="AddParameter">
+            + Add Parameter
+        </button>
+    </div>
+
+    <button type="submit" class="btn btn-primary" disabled="@isLoading">
+        @if (isLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Sending...</span>
+        }
+        else
+        {
+            <span>Send Templated Email</span>
+        }
+    </button>
+</EditForm>
+
+@code {
+    private TemplatedEmailModel emailModel = new();
+    private bool? success;
+    private string messageId = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+    private Dictionary<string, string> templateParameters = new();
+    private int parameterCounter = 0;
+
+    protected override void OnInitialized()
+    {
+        // Add default parameters
+        templateParameters.Add("name", "John Doe");
+        templateParameters.Add("company", "TestResend");
+    }
+
+    public class TemplatedEmailModel
+    {
+        public string From { get; set; } = "mariobot113@hotmail.com";
+        public string To { get; set; } = "mariobot113@hotmail.com";
+        public long TemplateId { get; set; } = 1;
+    }
+
+    private void AddParameter()
+    {
+        parameterCounter++;
+        var newKey = $"param{parameterCounter}";
+        if (!templateParameters.ContainsKey(newKey))
+        {
+            templateParameters.Add(newKey, "");
+        }
+    }
+
+    private void RemoveParameter(string key)
+    {
+        templateParameters.Remove(key);
+    }
+
+    private void UpdateParameterKey(string oldKey, string newKey)
+    {
+        if (!string.IsNullOrWhiteSpace(newKey) && oldKey != newKey && !templateParameters.ContainsKey(newKey))
+        {
+            var value = templateParameters[oldKey];
+            templateParameters.Remove(oldKey);
+            templateParameters.Add(newKey, value);
+        }
+    }
+
+    private void UpdateParameterValue(string key, string newValue)
+    {
+        if (templateParameters.ContainsKey(key))
+        {
+            templateParameters[key] = newValue;
+        }
+    }
+
+    private async Task SendEmailAsync()
+    {
+        isLoading = true;
+        success = null;
+
+        try
+        {
+            var result = await bravoEmailService.SendTemplatedEmailAsync(
+                emailModel.From,
+                emailModel.To,
+                emailModel.TemplateId,
+                templateParameters
+            );
+
+            success = true;
+            messageId = result.MessageId ?? "N/A";
+            errorMessage = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            errorMessage = ex.Message;
+            messageId = string.Empty;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
