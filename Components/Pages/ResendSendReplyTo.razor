@@ -1,0 +1,105 @@
+@page "/ResendSendReplyTo"
+@using TestResend.Services
+
+@inject ResendEmailServiceV4 resendEmailService
+
+<h3>Send Email with Reply-To (Resend)</h3>
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? $"Email sent successfully! Message ID: {messageId}" : $"Failed to send email: {errorMessage}")
+    </div>
+}
+
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" FormName="ResendSendReplyToForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="from" class="form-label">From:</label>
+        <InputText id="from" class="form-control" @bind-Value="emailModel.From" />
+        <small class="text-muted">Must be a verified domain email</small>
+    </div>
+    
+    <div class="mb-3">
+        <label for="to" class="form-label">To:</label>
+        <InputText id="to" class="form-control" @bind-Value="emailModel.To" />
+    </div>
+
+    <div class="mb-3">
+        <label for="replyTo" class="form-label">Reply-To:</label>
+        <InputText id="replyTo" class="form-control" @bind-Value="emailModel.ReplyTo" />
+        <small class="text-muted">Replies will be sent to this address</small>
+    </div>
+    
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject:</label>
+        <InputText id="subject" class="form-control" @bind-Value="emailModel.Subject" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="body" class="form-label">Body (HTML):</label>
+        <InputTextArea id="body" class="form-control" rows="5" @bind-Value="emailModel.Body" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" disabled="@isLoading">
+        @if (isLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Sending...</span>
+        }
+        else
+        {
+            <span>Send Email</span>
+        }
+    </button>
+</EditForm>
+
+@code {
+    private EmailWithReplyToModel emailModel = new();
+    private bool? success;
+    private string messageId = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+
+    public class EmailWithReplyToModel
+    {
+        public string From { get; set; } = "onboarding@resend.dev";
+        public string To { get; set; } = "mariobot113@hotmail.com";
+        public string ReplyTo { get; set; } = "support@example.com";
+        public string Subject { get; set; } = "Email with Reply-To - Resend";
+        public string Body { get; set; } = "<p>When you reply to this email, your response will go to the Reply-To address.</p>";
+    }
+
+    private async Task SendEmailAsync()
+    {
+        isLoading = true;
+        success = null;
+
+        try
+        {
+            var result = await resendEmailService.SendEmailWithReplyToAsync(
+                emailModel.From,
+                emailModel.To,
+                emailModel.Subject,
+                emailModel.Body,
+                emailModel.ReplyTo
+            );
+
+            success = true;
+            messageId = result.Id ?? "N/A";
+            errorMessage = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            errorMessage = ex.Message;
+            messageId = string.Empty;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
