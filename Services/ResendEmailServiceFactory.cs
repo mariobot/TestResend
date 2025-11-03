@@ -2,6 +2,15 @@ using Resend;
 
 namespace TestResend.Services
 {
+    namespace TestResend.Services
+    {
+        public interface IResendEmailServiceFactory
+        {
+            IResend CreateInstance();
+        }
+    }
+
+
     /// <summary>
     /// Factory pattern implementation for creating Resend email instances
     /// </summary>
@@ -23,7 +32,7 @@ namespace TestResend.Services
     /// <summary>
     /// Service using the factory pattern with additional features
     /// </summary>
-    public class ResendEmailServiceV4
+    public class ResendEmailServiceV4 : IResendEmailServiceV4
     {
         private readonly ResendEmailServiceFactory _factory;
 
@@ -83,6 +92,55 @@ namespace TestResend.Services
 
             return await resend.EmailSendAsync(message);
         }
+
+        public async Task<ResendResponse> SendEmailWithAttachmentAsync(
+            string from,
+            string to,
+            string subject,
+            string body,
+            byte[] attachmentContent,
+            string attachmentName)
+        {
+            var resend = _factory.CreateInstance();
+            var message = new EmailMessage
+            {
+                From = from,
+                Subject = subject,
+                HtmlBody = body
+            };
+            message.To.Add(to);
+            var attachment = new EmailAttachment
+            {
+                Filename = attachmentName,
+                Content = Convert.ToBase64String(attachmentContent)
+            };
+            message.Attachments.Add(attachment);
+            return await resend.EmailSendAsync(message);
+        }
+
+        public async Task<ResendResponse> SendBulkEmailAsync(
+     string from,
+     List<string> toList,
+     string subject,
+     string body)
+        {
+            var resend = _factory.CreateInstance();
+
+            var message = new EmailMessage
+            {
+                From = from,
+                Subject = subject,
+                HtmlBody = body
+            };
+
+            foreach (var to in toList)
+            {
+                message.To.Add(to);
+            }
+
+            return await resend.EmailSendAsync(message);
+        }
+
 
         public async Task<ResendResponse> SendEmailWithReplyToAsync(
             string from,
