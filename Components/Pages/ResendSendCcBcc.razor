@@ -1,0 +1,120 @@
+@page "/ResendSendCcBcc"
+@using TestResend.Services
+
+@inject ResendEmailServiceV4 resendEmailService
+
+<h3>Send Email with CC/BCC (Resend)</h3>
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? $"Email sent successfully! Message ID: {messageId}" : $"Failed to send email: {errorMessage}")
+    </div>
+}
+
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" FormName="ResendSendCcBccForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="from" class="form-label">From:</label>
+        <InputText id="from" class="form-control" @bind-Value="emailModel.From" />
+        <small class="text-muted">Must be a verified domain email</small>
+    </div>
+    
+    <div class="mb-3">
+        <label for="to" class="form-label">To:</label>
+        <InputText id="to" class="form-control" @bind-Value="emailModel.To" />
+    </div>
+
+    <div class="mb-3">
+        <label for="cc" class="form-label">CC (comma separated):</label>
+        <InputText id="cc" class="form-control" @bind-Value="emailModel.Cc" placeholder="cc1@example.com, cc2@example.com" />
+    </div>
+
+    <div class="mb-3">
+        <label for="bcc" class="form-label">BCC (comma separated):</label>
+        <InputText id="bcc" class="form-control" @bind-Value="emailModel.Bcc" placeholder="bcc1@example.com, bcc2@example.com" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject:</label>
+        <InputText id="subject" class="form-control" @bind-Value="emailModel.Subject" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="body" class="form-label">Body (HTML):</label>
+        <InputTextArea id="body" class="form-control" rows="5" @bind-Value="emailModel.Body" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" disabled="@isLoading">
+        @if (isLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Sending...</span>
+        }
+        else
+        {
+            <span>Send Email</span>
+        }
+    </button>
+</EditForm>
+
+@code {
+    private EmailWithCcBccModel emailModel = new();
+    private bool? success;
+    private string messageId = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+
+    public class EmailWithCcBccModel
+    {
+        public string From { get; set; } = "onboarding@resend.dev";
+        public string To { get; set; } = "mariobot113@hotmail.com";
+        public string Cc { get; set; } = "";
+        public string Bcc { get; set; } = "";
+        public string Subject { get; set; } = "Email with CC/BCC - Resend";
+        public string Body { get; set; } = "<p>This email demonstrates CC and BCC functionality.</p>";
+    }
+
+    private async Task SendEmailAsync()
+    {
+        isLoading = true;
+        success = null;
+
+        try
+        {
+            // Parse CC and BCC
+            var ccList = string.IsNullOrWhiteSpace(emailModel.Cc) 
+                ? null 
+                : emailModel.Cc.Split(',').Select(e => e.Trim()).Where(e => !string.IsNullOrWhiteSpace(e)).ToList();
+            
+            var bccList = string.IsNullOrWhiteSpace(emailModel.Bcc) 
+                ? null 
+                : emailModel.Bcc.Split(',').Select(e => e.Trim()).Where(e => !string.IsNullOrWhiteSpace(e)).ToList();
+
+            var result = await resendEmailService.SendEmailWithCcBccAsync(
+                emailModel.From,
+                emailModel.To,
+                emailModel.Subject,
+                emailModel.Body,
+                ccList,
+                bccList
+            );
+
+            success = true;
+            messageId = result.Id ?? "N/A";
+            errorMessage = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            errorMessage = ex.Message;
+            messageId = string.Empty;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
