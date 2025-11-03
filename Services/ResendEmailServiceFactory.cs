@@ -32,7 +32,7 @@ namespace TestResend.Services
             _factory = factory;
         }
 
-        public async Task<EmailSendResponse> SendEmailAsync(string from, string to, string subject, string body)
+        public async Task<Resend.ResendResponse> SendEmailAsync(string from, string to, string subject, string body)
         {
             var resend = _factory.CreateInstance();
 
@@ -47,7 +47,7 @@ namespace TestResend.Services
             return await resend.EmailSendAsync(message);
         }
 
-        public async Task<EmailSendResponse> SendEmailWithCcBccAsync(
+        public async Task<ResendResponse> SendEmailWithCcBccAsync(
             string from,
             string to,
             string subject,
@@ -84,7 +84,7 @@ namespace TestResend.Services
             return await resend.EmailSendAsync(message);
         }
 
-        public async Task<EmailSendResponse> SendEmailWithReplyToAsync(
+        public async Task<ResendResponse> SendEmailWithReplyToAsync(
             string from,
             string to,
             string subject,
@@ -105,12 +105,12 @@ namespace TestResend.Services
             return await resend.EmailSendAsync(message);
         }
 
-        public async Task<EmailSendResponse> SendEmailWithTagsAsync(
+        public async Task<ResendResponse> SendEmailWithTagsAsync(
             string from,
             string to,
             string subject,
             string body,
-            List<Tag> tags)
+            List<Resend.EmailTag> tags)
         {
             var resend = _factory.CreateInstance();
 

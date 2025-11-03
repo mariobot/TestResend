@@ -14,7 +14,7 @@ namespace TestResend.Services
             _resend = resend;
         }
 
-        public async Task<EmailSendResponse> SendEmailAsync(string from, string to, string subject, string htmlBody, string? textBody = null)
+        public async Task<ResendResponse> SendEmailAsync(string from, string to, string subject, string htmlBody, string? textBody = null)
         {
             var message = new EmailMessage
             {
@@ -28,7 +28,7 @@ namespace TestResend.Services
             return await _resend.EmailSendAsync(message);
         }
 
-        public async Task<EmailSendResponse> SendEmailWithNameAsync(
+        public async Task<ResendResponse> SendEmailWithNameAsync(
             string fromEmail,
             string fromName,
             string toEmail,

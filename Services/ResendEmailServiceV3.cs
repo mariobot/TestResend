@@ -17,7 +17,7 @@ namespace TestResend.Services
             _logger.LogInformation("ResendEmailServiceV3 initialized successfully");
         }
 
-        public async Task<EmailSendResponse> SendEmailAsync(string from, string to, string subject, string body)
+        public async Task<ResendResponse> SendEmailAsync(string from, string to, string subject, string body)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace TestResend.Services
 
                 var result = await _resend.EmailSendAsync(message);
 
-                _logger.LogInformation("Email sent successfully. MessageId: {MessageId}", result.Id);
+                _logger.LogInformation("Email sent successfully. MessageId: {MessageId}", result);
                 return result;
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace TestResend.Services
             }
         }
 
-        public async Task<EmailSendResponse> SendEmailWithAttachmentAsync(
+        public async Task<ResendResponse> SendEmailWithAttachmentAsync(
             string from,
             string to,
             string subject,
@@ -64,7 +64,7 @@ namespace TestResend.Services
                 message.To.Add(to);
 
                 // Add attachment
-                message.Attachments.Add(new Attachment
+                message.Attachments.Add(new EmailAttachment
                 {
                     Content = Convert.ToBase64String(attachmentContent),
                     Filename = attachmentName
@@ -72,7 +72,7 @@ namespace TestResend.Services
 
                 var result = await _resend.EmailSendAsync(message);
 
-                _logger.LogInformation("Email with attachment sent successfully. MessageId: {MessageId}", result.Id);
+                _logger.LogInformation("Email with attachment sent successfully. MessageId: {MessageId}", result);
                 return result;
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace TestResend.Services
             }
         }
 
-        public async Task<EmailSendResponse> SendBulkEmailAsync(string from, List<string> toEmails, string subject, string body)
+        public async Task<ResendResponse> SendBulkEmailAsync(string from, List<string> toEmails, string subject, string body)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace TestResend.Services
 
                 var result = await _resend.EmailSendAsync(message);
 
-                _logger.LogInformation("Bulk email sent successfully. MessageId: {MessageId}", result.Id);
+                _logger.LogInformation("Bulk email sent successfully. MessageId: {MessageId}", result);
                 return result;
             }
             catch (Exception ex)
