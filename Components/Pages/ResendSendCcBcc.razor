@@ -102,9 +102,16 @@
                 bccList
             );
 
-            success = true;
-            messageId = result.Id ?? "N/A";
-            errorMessage = string.Empty;
+            if (result.Success)
+            {
+                messageId = result.ToString();
+                errorMessage = string.Empty;
+            }
+            else
+            {
+                errorMessage = result.Exception.Message.ToString();
+                messageId = string.Empty;
+            }
         }
         catch (Exception ex)
         {

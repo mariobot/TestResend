@@ -1,7 +1,7 @@
 @page "/ResendSendReplyTo"
 @using TestResend.Services
 
-@inject ResendEmailServiceV4 resendEmailService
+@inject ResendEmailServiceV3 resendEmailService
 
 <h3>Send Email with Reply-To (Resend)</h3>
 
@@ -79,17 +79,23 @@
 
         try
         {
-            var result = await resendEmailService.SendEmailWithReplyToAsync(
+            var result = await resendEmailService.SendEmailAsync(
                 emailModel.From,
                 emailModel.To,
                 emailModel.Subject,
-                emailModel.Body,
-                emailModel.ReplyTo
+                emailModel.Body                
             );
 
-            success = true;
-            messageId = result.Id ?? "N/A";
-            errorMessage = string.Empty;
+            if (result.Success)
+            {
+                messageId = result.ToString();
+                errorMessage = string.Empty;
+            }
+            else
+            {
+                errorMessage = result.Exception.Message.ToString();
+                messageId = string.Empty;
+            }
         }
         catch (Exception ex)
         {
