@@ -1,0 +1,136 @@
+@page "/ResendSendAttachment"
+@using TestResend.Services
+
+@inject IResendEmailService resendEmailService
+
+<h3>Send Email with Attachment (Resend)</h3>
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? $"Email sent successfully! Message ID: {messageId}" : $"Failed to send email: {errorMessage}")
+    </div>
+}
+
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" FormName="ResendSendAttachmentForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="from" class="form-label">From:</label>
+        <InputText id="from" class="form-control" @bind-Value="emailModel.From" />
+        <small class="text-muted">Must be a verified domain email</small>
+    </div>
+    
+    <div class="mb-3">
+        <label for="to" class="form-label">To:</label>
+        <InputText id="to" class="form-control" @bind-Value="emailModel.To" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject:</label>
+        <InputText id="subject" class="form-control" @bind-Value="emailModel.Subject" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="body" class="form-label">Body (HTML):</label>
+        <InputTextArea id="body" class="form-control" rows="5" @bind-Value="emailModel.Body" />
+    </div>
+
+    <div class="mb-3">
+        <label for="attachment" class="form-label">Attachment:</label>
+        <InputFile id="attachment" class="form-control" OnChange="HandleFileSelected" accept="*/*" />
+        @if (!string.IsNullOrEmpty(selectedFileName))
+        {
+            <small class="text-muted">Selected: @selectedFileName (@fileSize KB)</small>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary" disabled="@(!isFileSelected || isLoading)">
+        @if (isLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Sending...</span>
+        }
+        else
+        {
+            <span>Send Email with Attachment</span>
+        }
+    </button>
+</EditForm>
+
+@code {
+    private EmailWithAttachmentModel emailModel = new();
+    private bool? success;
+    private string messageId = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+    private bool isFileSelected = false;
+    private string selectedFileName = string.Empty;
+    private long fileSize = 0;
+    private byte[]? fileContent;
+
+    public class EmailWithAttachmentModel
+    {
+        public string From { get; set; } = "onboarding@resend.dev";
+        public string To { get; set; } = "mariobot113@hotmail.com";
+        public string Subject { get; set; } = "Email with Attachment - Resend";
+        public string Body { get; set; } = "<p>Please find the attached file.</p>";
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            selectedFileName = file.Name;
+            fileSize = file.Size / 1024; // Convert to KB
+            
+            // Read file content
+            using var memoryStream = new MemoryStream();
+            await file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(memoryStream); // 10MB max
+            fileContent = memoryStream.ToArray();
+            
+            isFileSelected = true;
+        }
+    }
+
+    private async Task SendEmailAsync()
+    {
+        if (fileContent == null || string.IsNullOrEmpty(selectedFileName))
+        {
+            errorMessage = "Please select a file to attach.";
+            success = false;
+            return;
+        }
+
+        isLoading = true;
+        success = null;
+
+        try
+        {
+            var result = await resendEmailService.SendEmailWithAttachmentAsync(
+                emailModel.From,
+                emailModel.To,
+                emailModel.Subject,
+                emailModel.Body,
+                fileContent,
+                selectedFileName
+            );
+
+            success = true;
+            messageId = result.Id ?? "N/A";
+            errorMessage = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            errorMessage = ex.Message;
+            messageId = string.Empty;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
