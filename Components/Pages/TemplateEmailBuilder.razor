@@ -1,0 +1,381 @@
+@page "/template-email-builder"
+@using TestResend.Services
+@using Resend
+@inject IResend ResendClient
+@rendermode InteractiveServer
+
+<PageTitle>Email Template Builder</PageTitle>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mb-4">📧 Professional Email Template Builder</h1>
+            <p class="text-muted">Fill in the form below to create and send a professional email</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Form Column -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Email Details</h5>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="@templateData" OnValidSubmit="@HandleSendEmail">
+                        <!-- Template Selection -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">🎨 Template Selection</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Choose Template</label>
+                                <select @bind="selectedTemplate" @bind:after="OnTemplateChanged" class="form-select" disabled="@isLoadingTemplate">
+                                    <option value="ProfessionalEmail">Professional Purple Gradient</option>
+                                    <option value="ModernMinimal">Modern Minimal Black</option>
+                                    <option value="CorporateBlue">Corporate Blue</option>
+                                    <option value="WarmWelcome">Warm Welcome Orange</option>
+                                </select>
+                                @if (isLoadingTemplate)
+                                {
+                                    <div class="text-center mt-2">
+                                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                        <small class="text-muted">Loading template...</small>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Email Settings -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">📨 Email Settings</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">From Email</label>
+                                <InputText @bind-Value="fromEmail" class="form-control" placeholder="sender@example.com" />
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">To Email</label>
+                                <InputText @bind-Value="toEmail" class="form-control" placeholder="recipient@example.com" />
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <InputText @bind-Value="subject" class="form-control" placeholder="Email Subject" />
+                            </div>
+                        </div>
+
+                        <!-- Header Section -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">🏢 Company Information</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Company Name</label>
+                                <InputText @bind-Value="templateData.CompanyName" class="form-control" />
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Company Tagline</label>
+                                <InputText @bind-Value="templateData.CompanyTagline" class="form-control" />
+                            </div>
+                        </div>
+
+                        <!-- Content Section -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">✉️ Email Content</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Customer Name</label>
+                                <InputText @bind-Value="templateData.CustomerName" class="form-control" />
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Main Message</label>
+                                <InputTextArea @bind-Value="templateData.MainMessage" class="form-control" rows="3" />
+                            </div>
+                        </div>
+
+                        <!-- Highlight Box -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">⭐ Highlight Box</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Highlight Label</label>
+                                <InputText @bind-Value="templateData.HighlightLabel" class="form-control" placeholder="e.g., Order Number" />
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Highlight Value</label>
+                                <InputText @bind-Value="templateData.HighlightValue" class="form-control" placeholder="e.g., #12345" />
+                            </div>
+                        </div>
+
+                        <!-- Information Fields -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">📋 Information Fields</h6>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 1 Label</label>
+                                    <InputText @bind-Value="templateData.Field1Label" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 1 Value</label>
+                                    <InputText @bind-Value="templateData.Field1Value" class="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 2 Label</label>
+                                    <InputText @bind-Value="templateData.Field2Label" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 2 Value</label>
+                                    <InputText @bind-Value="templateData.Field2Value" class="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 3 Label</label>
+                                    <InputText @bind-Value="templateData.Field3Label" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 3 Value</label>
+                                    <InputText @bind-Value="templateData.Field3Value" class="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 4 Label</label>
+                                    <InputText @bind-Value="templateData.Field4Label" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Field 4 Value</label>
+                                    <InputText @bind-Value="templateData.Field4Value" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Call to Action Button -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">🔘 Call to Action</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Button Text</label>
+                                <InputText @bind-Value="templateData.ButtonText" class="form-control" />
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Button Link (URL)</label>
+                                <InputText @bind-Value="templateData.ButtonLink" class="form-control" placeholder="https://example.com" />
+                            </div>
+                        </div>
+
+                        <!-- Secondary Message -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">💬 Additional Message</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Secondary Message</label>
+                                <InputTextArea @bind-Value="templateData.SecondaryMessage" class="form-control" rows="2" />
+                            </div>
+                        </div>
+
+                        <!-- Footer Information -->
+                        <div class="mb-4">
+                            <h6 class="border-bottom pb-2">📍 Footer Information</h6>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Company Address</label>
+                                <InputText @bind-Value="templateData.CompanyAddress" class="form-control" />
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone</label>
+                                    <InputText @bind-Value="templateData.CompanyPhone" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <InputText @bind-Value="templateData.CompanyEmail" class="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Website URL</label>
+                                <InputText @bind-Value="templateData.WebsiteUrl" class="form-control" />
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Disclaimer Text</label>
+                                <InputTextArea @bind-Value="templateData.DisclaimerText" class="form-control" rows="2" />
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-2">
+                            <button type="button" @onclick="GeneratePreview" class="btn btn-info btn-lg" disabled="@isProcessing">
+                                <span class="@(isProcessing ? "spinner-border spinner-border-sm me-2" : "")"></span>
+                                👁️ Preview Email
+                            </button>
+                            <button type="submit" class="btn btn-success btn-lg" disabled="@isProcessing">
+                                <span class="@(isProcessing ? "spinner-border spinner-border-sm me-2" : "")"></span>
+                                📤 Send Email
+                            </button>
+                        </div>
+                    </EditForm>
+
+                    @if (!string.IsNullOrEmpty(statusMessage))
+                    {
+                        <div class="alert @(isError ? "alert-danger" : "alert-success") mt-3" role="alert">
+                            @statusMessage
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Column -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">📱 Email Preview</h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (!string.IsNullOrEmpty(previewHtml))
+                    {
+                        <iframe srcdoc="@previewHtml" style="width: 100%; height: 600px; border: none;"></iframe>
+                    }
+                    else
+                    {
+                        <div class="p-5 text-center text-muted">
+                            <p>Click "Preview Email" to see how your email will look</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private EmailTemplateData templateData = new EmailTemplateData
+    {
+        CompanyName = "Your Company",
+        CompanyTagline = "Your Tagline Here",
+        CustomerName = "John Doe",
+        MainMessage = "This is your main message to the customer.",
+        HighlightLabel = "Order Number",
+        HighlightValue = "#12345",
+        Field1Label = "Date",
+        Field1Value = DateTime.Now.ToString("MMMM dd, yyyy"),
+        Field2Label = "Status",
+        Field2Value = "Confirmed",
+        Field3Label = "Amount",
+        Field3Value = "$99.99",
+        Field4Label = "Payment Method",
+        Field4Value = "Credit Card",
+        ButtonText = "View Details",
+        ButtonLink = "https://example.com",
+        SecondaryMessage = "Thank you for choosing us!",
+        CompanyAddress = "123 Main Street, City, Country",
+        CompanyPhone = "+1 234 567 890",
+        CompanyEmail = "info@company.com",
+        WebsiteUrl = "https://yourcompany.com",
+        DisclaimerText = "This email was sent because you are subscribed to our service."
+    };
+
+    private string selectedTemplate = "ProfessionalEmail";
+    private string fromEmail = "onboarding@resend.dev";
+    private string toEmail = "";
+    private string subject = "Professional Email";
+    private string previewHtml = "";
+    private string statusMessage = "";
+    private bool isError = false;
+    private bool isProcessing = false;
+    private bool isLoadingTemplate = false;
+
+    private EmailTemplateService templateService = new EmailTemplateService();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Generate initial preview
+        await GeneratePreview();
+    }
+
+    private async Task OnTemplateChanged()
+    {
+        isLoadingTemplate = true;
+        try
+        {
+            await GeneratePreview();
+        }
+        finally
+        {
+            isLoadingTemplate = false;
+        }
+    }
+
+    private async Task GeneratePreview()
+    {
+        try
+        {
+            var template = await templateService.LoadTemplateAsync(selectedTemplate);
+            previewHtml = templateService.PopulateTemplate(template, templateData);
+            statusMessage = "";
+            isError = false;
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Preview error: {ex.Message}";
+            isError = true;
+        }
+    }
+
+    private async Task HandleSendEmail()
+    {
+        isProcessing = true;
+        isError = false;
+        statusMessage = "";
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(toEmail))
+            {
+                statusMessage = "Please enter a recipient email address.";
+                isError = true;
+                return;
+            }
+
+            // Generate HTML from template
+            var template = await templateService.LoadTemplateAsync(selectedTemplate);
+            var html = templateService.PopulateTemplate(template, templateData);
+
+            // Send via Resend
+            var message = new EmailMessage
+            {
+                From = fromEmail,
+                Subject = subject,
+                HtmlBody = html
+            };
+            message.To.Add(toEmail);
+
+            var response = await ResendClient.EmailSendAsync(message);
+
+            statusMessage = $"✅ Email sent successfully! ID: {response.ToString()}";
+            isError = false;
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"❌ Error sending email: {ex.Message}";
+            isError = true;
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+}

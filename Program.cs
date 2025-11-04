@@ -32,6 +32,7 @@ namespace TestResend
             // Register Email Services
             builder.Services.AddTransient<ResendEmailService>();
             builder.Services.AddTransient<BravoEmailService>();
+            builder.Services.AddTransient<EmailTemplateService>();
             
             // Register Resend Email Service implementations
             builder.Services.AddTransient<IResendEmailService, ResendEmailServiceV3>();
