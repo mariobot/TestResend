@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EmailTitle}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f4f4f4;
+        }
+        
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            color: #e0e7ff;
+            font-size: 14px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #555555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #333333;
+        }
+        
+        .info-value {
+            color: #666666;
+            text-align: right;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .highlight-title {
+            font-size: 14px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+            margin: 30px 0;
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-link {
+            display: inline-block;
+            margin: 0 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .small-text {
+            font-size: 12px;
+            color: #999999;
+            margin-top: 20px;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .greeting {
+                font-size: 20px;
+            }
+            
+            .info-row {
+                flex-direction: column;
+            }
+            
+            .info-value {
+                text-align: left;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">{{CompanyName}}</div>
+            <div class="header-subtitle">{{CompanyTagline}}</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">Hi {{CustomerName}}! 👋</div>
+            
+            <div class="message">
+                {{MainMessage}}
+            </div>
+            
+            <!-- Highlight Box (Optional - for important numbers/dates) -->
+            <div class="highlight-box">
+                <div class="highlight-title">{{HighlightLabel}}</div>
+                <div class="highlight-value">{{HighlightValue}}</div>
+            </div>
+            
+            <!-- Information Box -->
+            <div class="info-box">
+                <div class="info-row">
+                    <span class="info-label">{{Field1Label}}</span>
+                    <span class="info-value">{{Field1Value}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">{{Field2Label}}</span>
+                    <span class="info-value">{{Field2Value}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">{{Field3Label}}</span>
+                    <span class="info-value">{{Field3Value}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">{{Field4Label}}</span>
+                    <span class="info-value">{{Field4Value}}</span>
+                </div>
+            </div>
+            
+            <!-- Call to Action Button -->
+            <div class="button-container">
+                <a href="{{ButtonLink}}" class="button">{{ButtonText}}</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- Additional Message -->
+            <div class="message">
+                {{SecondaryMessage}}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-text">
+                <strong>{{CompanyName}}</strong><br>
+                {{CompanyAddress}}<br>
+                {{CompanyPhone}} | {{CompanyEmail}}
+            </div>
+            
+            <div class="social-links">
+                <a href="{{WebsiteUrl}}" class="social-link">Website</a>
+                <a href="{{FacebookUrl}}" class="social-link">Facebook</a>
+                <a href="{{TwitterUrl}}" class="social-link">Twitter</a>
+                <a href="{{LinkedInUrl}}" class="social-link">LinkedIn</a>
+            </div>
+            
+            <div class="small-text">
+                {{DisclaimerText}}<br>
+                <a href="{{UnsubscribeLink}}" style="color: #667eea; text-decoration: none;">Unsubscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

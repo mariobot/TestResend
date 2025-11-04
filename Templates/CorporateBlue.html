@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EmailTitle}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f0f4f8;
+        }
+        
+        .email-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+        }
+        
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .header-subtitle {
+            color: #bfdbfe;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .content {
+            padding: 45px 40px;
+        }
+        
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #4b5563;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            padding: 35px;
+            margin: 35px 0;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2);
+        }
+        
+        .highlight-label {
+            font-size: 13px;
+            color: #bfdbfe;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .highlight-value {
+            font-size: 38px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .info-row {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            padding: 18px 25px;
+            font-weight: 600;
+            color: #1e40af;
+            width: 45%;
+            font-size: 14px;
+        }
+        
+        .info-value {
+            padding: 18px 25px;
+            color: #374151;
+            font-size: 15px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(30, 64, 175, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(30, 64, 175, 0.4);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+            margin: 35px 0;
+        }
+        
+        .footer {
+            background-color: #1e293b;
+            padding: 40px;
+            text-align: center;
+            color: #cbd5e1;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            margin: 25px 0;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+        
+        .social-link {
+            display: inline-block;
+            margin: 0 12px;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .social-link:hover {
+            color: #60a5fa;
+        }
+        
+        .small-text {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 25px;
+            line-height: 1.6;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .content, .header, .footer {
+                padding: 30px 20px;
+            }
+            
+            .info-label, .info-value {
+                display: block;
+                width: 100%;
+            }
+            
+            .info-label {
+                padding-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">{{CompanyName}}</div>
+            <div class="header-subtitle">{{CompanyTagline}}</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">Dear {{CustomerName}},</div>
+            
+            <div class="message">
+                {{MainMessage}}
+            </div>
+            
+            <!-- Highlight Section -->
+            <div class="highlight-section">
+                <div class="highlight-label">{{HighlightLabel}}</div>
+                <div class="highlight-value">{{HighlightValue}}</div>
+            </div>
+            
+            <!-- Information Table -->
+            <table class="info-table">
+                <tr class="info-row">
+                    <td class="info-label">{{Field1Label}}</td>
+                    <td class="info-value">{{Field1Value}}</td>
+                </tr>
+                <tr class="info-row">
+                    <td class="info-label">{{Field2Label}}</td>
+                    <td class="info-value">{{Field2Value}}</td>
+                </tr>
+                <tr class="info-row">
+                    <td class="info-label">{{Field3Label}}</td>
+                    <td class="info-value">{{Field3Value}}</td>
+                </tr>
+                <tr class="info-row">
+                    <td class="info-label">{{Field4Label}}</td>
+                    <td class="info-value">{{Field4Value}}</td>
+                </tr>
+            </table>
+            
+            <!-- Call to Action Button -->
+            <div class="button-container">
+                <a href="{{ButtonLink}}" class="button">{{ButtonText}}</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- Additional Message -->
+            <div class="message">
+                {{SecondaryMessage}}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-title">{{CompanyName}}</div>
+            <div class="footer-text">
+                {{CompanyAddress}}<br>
+                {{CompanyPhone}} | {{CompanyEmail}}
+            </div>
+            
+            <div class="social-links">
+                <a href="{{WebsiteUrl}}" class="social-link">Website</a>
+                <a href="{{FacebookUrl}}" class="social-link">Facebook</a>
+                <a href="{{TwitterUrl}}" class="social-link">Twitter</a>
+                <a href="{{LinkedInUrl}}" class="social-link">LinkedIn</a>
+            </div>
+            
+            <div class="small-text">
+                {{DisclaimerText}}<br>
+                <a href="{{UnsubscribeLink}}" style="color: #3b82f6; text-decoration: none;">Unsubscribe from these emails</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

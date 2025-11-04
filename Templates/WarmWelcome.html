@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EmailTitle}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fff5eb 0%, #fef3c7 100%);
+        }
+        
+        .email-wrapper {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbbf24 100%);
+            padding: 45px 35px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(
+                90deg,
+                #ffffff,
+                #ffffff 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            opacity: 0.3;
+        }
+        
+        .logo {
+            font-size: 34px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-subtitle {
+            color: #fff7ed;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .content {
+            padding: 45px 35px;
+        }
+        
+        .greeting {
+            font-size: 26px;
+            font-weight: 700;
+            color: #f97316;
+            margin-bottom: 20px;
+        }
+        
+        .greeting-emoji {
+            font-size: 32px;
+            margin-right: 8px;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #525252;
+            margin-bottom: 25px;
+            line-height: 1.9;
+        }
+        
+        .welcome-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border-left: 5px solid #f97316;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .welcome-title {
+            font-size: 14px;
+            color: #ea580c;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .welcome-value {
+            font-size: 34px;
+            font-weight: 800;
+            color: #c2410c;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 35px 0;
+        }
+        
+        .info-card {
+            background-color: #fffbeb;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #fde68a;
+            transition: transform 0.2s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+        }
+        
+        .info-card-label {
+            font-size: 11px;
+            color: #92400e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .info-card-value {
+            font-size: 16px;
+            color: #1c1917;
+            font-weight: 600;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .divider {
+            height: 3px;
+            background: linear-gradient(to right, transparent, #fed7aa, transparent);
+            margin: 35px 0;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+            padding: 40px 35px;
+            text-align: center;
+            color: #fef3c7;
+        }
+        
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 20px;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            margin: 25px 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(254, 243, 199, 0.2);
+        }
+        
+        .social-link {
+            display: inline-block;
+            margin: 0 12px;
+            color: #fbbf24;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .social-link:hover {
+            color: #fde047;
+        }
+        
+        .small-text {
+            font-size: 11px;
+            color: #d97706;
+            margin-top: 25px;
+            line-height: 1.7;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .content, .header, .footer {
+                padding: 30px 20px;
+            }
+            
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .email-wrapper {
+                margin: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-decoration"></div>
+            <div class="logo">{{CompanyName}}</div>
+            <div class="header-subtitle">{{CompanyTagline}}</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">
+                <span class="greeting-emoji">👋</span>
+                Hey {{CustomerName}}!
+            </div>
+            
+            <div class="message">
+                {{MainMessage}}
+            </div>
+            
+            <!-- Welcome Card -->
+            <div class="welcome-card">
+                <div class="welcome-title">{{HighlightLabel}}</div>
+                <div class="welcome-value">{{HighlightValue}}</div>
+            </div>
+            
+            <!-- Information Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-card-label">{{Field1Label}}</div>
+                    <div class="info-card-value">{{Field1Value}}</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-label">{{Field2Label}}</div>
+                    <div class="info-card-value">{{Field2Value}}</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-label">{{Field3Label}}</div>
+                    <div class="info-card-value">{{Field3Value}}</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-label">{{Field4Label}}</div>
+                    <div class="info-card-value">{{Field4Value}}</div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="button-container">
+                <a href="{{ButtonLink}}" class="button">{{ButtonText}}</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- Additional Message -->
+            <div class="message">
+                {{SecondaryMessage}}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">{{CompanyName}}</div>
+            <div class="footer-text">
+                {{CompanyAddress}}<br>
+                {{CompanyPhone}} | {{CompanyEmail}}
+            </div>
+            
+            <div class="social-links">
+                <a href="{{WebsiteUrl}}" class="social-link">Website</a>
+                <a href="{{FacebookUrl}}" class="social-link">Facebook</a>
+                <a href="{{TwitterUrl}}" class="social-link">Twitter</a>
+                <a href="{{LinkedInUrl}}" class="social-link">LinkedIn</a>
+            </div>
+            
+            <div class="small-text">
+                {{DisclaimerText}}<br>
+                <a href="{{UnsubscribeLink}}" style="color: #fbbf24; text-decoration: none;">Click here to unsubscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
