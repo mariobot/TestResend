@@ -1,15 +1,13 @@
 ﻿<h3>Email Provider Selection</h3>
 
-<div class="d-flex gap-3 mb-3">
-    @foreach (var provider in Providers)
-    {
-        <div class="provider-select @(SelectedProvider == provider.Name ? "selected" : "")"
-             style="cursor:pointer; border:1px solid #ccc; border-radius:8px; padding:8px; text-align:center; width:120px;"
-             @onclick="() => SelectProvider(provider.Name)">
-            <img src="@provider.ImagePath" alt="@provider.Name" style="width:48px; height:48px; margin-bottom:8px;" />
-            <div>@provider.Name</div>
-        </div>
-    }
+<div class="mb-3">
+    <label for="emailProvider" class="form-label">Choose Email Provider:</label>
+    <select id="emailProvider" class="form-select" @bind="SelectedProvider">
+        @foreach (var provider in Providers)
+        {
+            <option value="@provider.Name">@provider.Name</option>
+        }
+    </select>
 </div>
 
 @code {
@@ -21,21 +19,20 @@
 
     private List<ProviderInfo> Providers = new()
     {
-        new ProviderInfo { Name = "Resend", ImagePath = "images/resend.png" },
-        new ProviderInfo { Name = "Twilio", ImagePath = "images/twilio.png" },
-        new ProviderInfo { Name = "Bravo", ImagePath = "images/bravo.png" },
-        new ProviderInfo { Name = "Mailchimp", ImagePath = "images/mailchimp.png" }
+        new ProviderInfo { Name = "Resend" },
+        new ProviderInfo { Name = "Twilio" },
+        new ProviderInfo { Name = "Bravo" },
+        new ProviderInfo { Name = "Mailchimp" }
     };
 
-    private async Task SelectProvider(string provider)
+    private async Task OnProviderChanged(ChangeEventArgs e)
     {
-        SelectedProvider = provider;
-        await SelectedProviderChanged.InvokeAsync(provider);
+        SelectedProvider = e.Value?.ToString() ?? "Resend";
+        await SelectedProviderChanged.InvokeAsync(SelectedProvider);
     }
 
     private class ProviderInfo
     {
         public string Name { get; set; } = "";
-        public string ImagePath { get; set; } = "";
     }
 }

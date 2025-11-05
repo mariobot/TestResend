@@ -1,82 +1,85 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">TestResend</a>
+﻿<nav class="nav flex-column">
+    <div class="nav-item px-3 text-muted">
+        <small>Bridge Actions</small>
     </div>
-</div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/SendEmail">
+            <span class="bi bi-envelope-plus-fill" aria-hidden="true"></span> Send Email
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/SendBulk">
+            <span class="bi bi-people-fill" aria-hidden="true"></span> Send Bulk Email
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/SendAttachment">
+            <span class="bi bi-paperclip" aria-hidden="true"></span> Send Attachment
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/ResendSendCcBcc">
+            <span class="bi bi-envelope-fill" aria-hidden="true"></span> Send CC/BCC
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/ResendSendReplyTo">
+            <span class="bi bi-reply-fill" aria-hidden="true"></span> Send Reply-To
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/template-email-builder2">
+            <span class="bi bi-envelope-paper-fill" aria-hidden="true"></span> Email Template Builder
+        </NavLink>
+    </div>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
+    <hr />
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/SendEmail">
-                <span class="bi bi-envelope-plus-fill" aria-hidden="true"></span> SendEmail
-            </NavLink>
-        </div>
+    <!-- Existing navigation continues below -->
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <span class="bi bi-house-door-fill" aria-hidden="true"></span> Home
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/SendEmailBravo">
+            <span class="bi bi-envelope-plus" aria-hidden="true"></span> SendEmail Bravo
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/SendTemplate">
+            <span class="bi bi-envelope-fill" aria-hidden="true"></span> Send Template
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/template-email-builder">
+            <span class="bi bi-envelope-paper-fill" aria-hidden="true"></span> Template Builder
+        </NavLink>
+    </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/SendEmailBravo">
-                <span class="bi bi-envelope-plus" aria-hidden="true"></span> SendEmail Bravo
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/SendTemplate">
-                <span class="bi bi-envelope-fill" aria-hidden="true"></span> Send Template
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/SendAttachment">
-                <span class="bi bi-paperclip" aria-hidden="true"></span> Send Attachment
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/SendBulk">
-                <span class="bi bi-people-fill" aria-hidden="true"></span> Send Bulk
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/template-email-builder">
-                <span class="bi bi-envelope-paper-fill" aria-hidden="true"></span> Template Builder
-            </NavLink>
-        </div>
-
-        <hr />
-        <div class="nav-item px-3 text-muted">
-            <small>Resend Provider</small>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/ResendSendAttachment">
-                <span class="bi bi-paperclip" aria-hidden="true"></span> Resend Attachment
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/ResendSendBulk">
-                <span class="bi bi-people-fill" aria-hidden="true"></span> Resend Bulk
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/ResendSendCcBcc">
-                <span class="bi bi-envelope-fill" aria-hidden="true"></span> Resend CC/BCC
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/ResendSendReplyTo">
-                <span class="bi bi-reply-fill" aria-hidden="true"></span> Resend Reply-To
-            </NavLink>
-        </div>
-    </nav>
-</div>
+    <hr />
+    <div class="nav-item px-3 text-muted">
+        <small>Resend Provider</small>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/ResendSendAttachment">
+            <span class="bi bi-paperclip" aria-hidden="true"></span> Resend Attachment
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/ResendSendBulk">
+            <span class="bi bi-people-fill" aria-hidden="true"></span> Resend Bulk
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/ResendSendCcBcc">
+            <span class="bi bi-envelope-fill" aria-hidden="true"></span> Resend CC/BCC
+        </NavLink>
+    </div>
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/ResendSendReplyTo">
+            <span class="bi bi-reply-fill" aria-hidden="true"></span> Resend Reply-To
+        </NavLink>
+    </div>
+</nav>
