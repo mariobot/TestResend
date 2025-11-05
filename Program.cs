@@ -36,7 +36,7 @@ namespace TestResend
 
             // Register Email Services
             builder.Services.AddTransient<ResendEmailService>();
-            builder.Services.AddTransient<BravoEmailService>();
+            builder.Services.AddTransient<BrevoEmailService>();
             builder.Services.AddTransient<EmailTemplateService>();
             
             // Register Resend Email Service implementations
@@ -47,9 +47,9 @@ namespace TestResend
             builder.Services.AddTransient<IResendEmailServiceV4, ResendEmailServiceV4>();
 
             // Register Brevo Email Service implementations
-            builder.Services.AddTransient<IBravoEmailService, BravoEmailServiceV3>();
-            builder.Services.AddTransient<BravoEmailServiceV2>();
-            builder.Services.AddTransient<BravoEmailServiceFactory>();
+            builder.Services.AddTransient<IBrevoEmailService, BrevoEmailServiceV3>();
+            builder.Services.AddTransient<BrevoEmailServiceV2>();
+            builder.Services.AddTransient<BrevoEmailServiceFactory>();
             builder.Services.AddTransient<BravoEmailServiceV4>();
 
             // Register MailChip Email Service

@@ -13,13 +13,13 @@ namespace TestResend.Bridge
     {
         private readonly IResendEmailService _resendService;
         private readonly TwilitoEmailService _twilioService;
-        private readonly IBravoEmailService _bravoService;
+        private readonly IBrevoEmailService _bravoService;
         private readonly MailChipEmailService _mailchipService;
 
         public BridgeApp(
             IResendEmailService resendService,
             TwilitoEmailService twilioService,
-            IBravoEmailService bravoService,
+            IBrevoEmailService bravoService,
             MailChipEmailService mailchipService)
         {
             _resendService = resendService;
