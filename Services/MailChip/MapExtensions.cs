@@ -5,7 +5,7 @@ namespace TestResend.Services.MailChip
 {
     public static class MapExtensions
     {
-        public static SendEmailMessage ToSendEmailMessage(EmailMessage message)
+internal static SendEmailMessage ToSendEmailMessage(EmailMessage message)
         {
             return new SendEmailMessage
             {
