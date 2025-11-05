@@ -2,7 +2,7 @@ using sib_api_v3_sdk.Model;
 
 namespace TestResend.Services.Bravo
 {
-    public interface IBravoEmailService
+    public interface IBrevoEmailService
     {
         Task<CreateSmtpEmail> SendEmailAsync(string from, string to, string subject, string body);
         Task<CreateSmtpEmail> SendEmailWithAttachmentAsync(string from, string to, string subject, string body, byte[] attachmentContent, string attachmentName);

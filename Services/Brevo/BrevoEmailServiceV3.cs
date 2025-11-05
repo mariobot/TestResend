@@ -7,12 +7,12 @@ namespace TestResend.Services.Bravo
     /// <summary>
     /// Full-featured implementation with interface support and additional capabilities
     /// </summary>
-    public class BravoEmailServiceV3 : IBravoEmailService
+    public class BrevoEmailServiceV3 : IBrevoEmailService
     {
         private readonly TransactionalEmailsApi _apiInstance;
-        private readonly ILogger<BravoEmailServiceV3> _logger;
+        private readonly ILogger<BrevoEmailServiceV3> _logger;
 
-        public BravoEmailServiceV3(IConfiguration configuration, ILogger<BravoEmailServiceV3> logger)
+        public BrevoEmailServiceV3(IConfiguration configuration, ILogger<BrevoEmailServiceV3> logger)
         {
             _logger = logger;
 

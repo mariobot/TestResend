@@ -5,10 +5,10 @@ using sib_api_v3_sdk.Model;
 
 namespace TestResend.Services.Bravo
 {
-    public class BravoEmailService
+    public class BrevoEmailService
     {
         private readonly IConfiguration _configuration;
-        public BravoEmailService(IConfiguration configuration)
+        public BrevoEmailService(IConfiguration configuration)
         {
             _configuration = configuration;
         }

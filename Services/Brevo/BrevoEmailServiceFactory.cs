@@ -7,11 +7,11 @@ namespace TestResend.Services.Bravo
     /// <summary>
     /// Factory pattern implementation for creating Brevo email instances
     /// </summary>
-    public class BravoEmailServiceFactory
+    public class BrevoEmailServiceFactory
     {
         private readonly string _apiKey;
 
-        public BravoEmailServiceFactory(IConfiguration configuration)
+        public BrevoEmailServiceFactory(IConfiguration configuration)
         {
             _apiKey = configuration["BravoApi:Key"] ?? 
                 throw new InvalidOperationException("Bravo API key is missing.");
@@ -29,9 +29,9 @@ namespace TestResend.Services.Bravo
     /// </summary>
     public class BravoEmailServiceV4
     {
-        private readonly BravoEmailServiceFactory _factory;
+        private readonly BrevoEmailServiceFactory _factory;
 
-        public BravoEmailServiceV4(BravoEmailServiceFactory factory)
+        public BravoEmailServiceV4(BrevoEmailServiceFactory factory)
         {
             _factory = factory;
         }

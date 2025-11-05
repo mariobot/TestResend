@@ -7,11 +7,11 @@ namespace TestResend.Services.Bravo
     /// <summary>
     /// Alternative implementation of Brevo email service with singleton API instance
     /// </summary>
-    public class BravoEmailServiceV2
+    public class BrevoEmailServiceV2
     {
         private readonly TransactionalEmailsApi _apiInstance;
 
-        public BravoEmailServiceV2(IConfiguration configuration)
+        public BrevoEmailServiceV2(IConfiguration configuration)
         {
             var apiKey = configuration["BravoApi:Key"];
             if (string.IsNullOrWhiteSpace(apiKey))
