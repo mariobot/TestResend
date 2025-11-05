@@ -128,6 +128,7 @@
         finally
         {
             isLoading = false;
+            StateHasChanged();
         }
     }
 
@@ -168,6 +169,7 @@
         finally
         {
             isBulkLoading = false;
+            StateHasChanged();
         }
     }
 }

@@ -58,12 +58,15 @@ namespace TestResend
             // Requister Twilio SendGrid Email Service
             builder.Services.AddTransient<TwilitoEmailService>();
 
+            // Register SMS Services
+            builder.Services.AddTransient<TestResend.Services.Brevo.BrevoSmsServise>();
+
             // Register API Key Configuration Service
             builder.Services.AddSingleton<ApiKeyConfigurationService>();
 
             // Register the Bridge
-            // Register BridgeApp
             builder.Services.AddTransient<BridgeApp>();
+            builder.Services.AddTransient<BridgeSmsApp>();
 
             var app = builder.Build();
 
