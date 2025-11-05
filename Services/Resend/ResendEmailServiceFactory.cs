@@ -1,15 +1,10 @@
 using Resend;
-using TestResend.Services.Resend;
-
-namespace TestResend.Services
-{
-    namespace TestResend.Services
+namespace TestResend.Services.Resend
     {
         public interface IResendEmailServiceFactory
         {
             IResend CreateInstance();
         }
-    }
 
 
     /// <summary>
@@ -42,7 +37,7 @@ namespace TestResend.Services
             _factory = factory;
         }
 
-        public async Task<Resend.ResendResponse> SendEmailAsync(string from, string to, string subject, string body)
+        public async Task<ResendResponse> SendEmailAsync(string from, string to, string subject, string body)
         {
             var resend = _factory.CreateInstance();
 
@@ -169,7 +164,7 @@ namespace TestResend.Services
             string to,
             string subject,
             string body,
-            List<Resend.EmailTag> tags)
+            List<EmailTag> tags)
         {
             var resend = _factory.CreateInstance();
 
