@@ -41,6 +41,7 @@ namespace TestResend
             
             // Register Resend Email Service implementations
             builder.Services.AddTransient<IResendEmailService, ResendEmailServiceV3>();
+            builder.Services.AddTransient<ResendEmailServiceV3>();
             builder.Services.AddTransient<ResendEmailServiceV2>();
             builder.Services.AddTransient<ResendEmailServiceFactory>();
             builder.Services.AddTransient<IResendEmailServiceV4, ResendEmailServiceV4>();

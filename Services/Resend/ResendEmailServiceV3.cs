@@ -111,5 +111,54 @@ namespace TestResend.Services.Resend
                 throw;
             }
         }
+
+        public async Task<ResendResponse> SendEmailWithCcBccAsync(
+    string from,
+    string to,
+    string subject,
+    string body,
+    List<string>? cc = null,
+    List<string>? bcc = null)
+        {
+            try
+            {
+                _logger.LogInformation("Sending email with CC/BCC from {From} to {To}", from, to);
+
+                var message = new EmailMessage
+                {
+                    From = from,
+                    Subject = subject,
+                    HtmlBody = body
+                };
+                message.To.Add(to);
+
+                if (cc != null)
+                {
+                    foreach (var ccEmail in cc)
+                    {
+                        message.Cc.Add(ccEmail);
+                    }
+                }
+
+                if (bcc != null)
+                {
+                    foreach (var bccEmail in bcc)
+                    {
+                        message.Bcc.Add(bccEmail);
+                    }
+                }
+
+                var result = await _resend.EmailSendAsync(message);
+
+                _logger.LogInformation("Email with CC/BCC sent successfully. MessageId: {MessageId}", result);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to send email with CC/BCC from {From} to {To}", from, to);
+                throw;
+            }
+        }
+
     }
 }
