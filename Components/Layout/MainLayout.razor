@@ -8,9 +8,10 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
+        <div class="top-row" style="display:flex; justify-content:flex-start; align-items:center; padding-left:0;">
             <EmailProvider @bind-SelectedProvider="selectedProvider" />
         </div>
+
 
         <article class="content px-4">
             <CascadingValue Value="selectedProvider" Name="SelectedProvider">

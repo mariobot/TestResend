@@ -1,7 +1,6 @@
-﻿<h3>Email Provider Selection</h3>
-
+﻿<label for="emailProvider" class="form-label">Choose Email Provider:</label>
 <div class="mb-3">
-    <label for="emailProvider" class="form-label">Choose Email Provider:</label>
+    
     <select id="emailProvider" class="form-select" @bind="SelectedProvider">
         @foreach (var provider in Providers)
         {
