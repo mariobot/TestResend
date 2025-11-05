@@ -1,6 +1,6 @@
 using sib_api_v3_sdk.Model;
 
-namespace TestResend.Services
+namespace TestResend.Services.Bravo
 {
     public interface IBravoEmailService
     {

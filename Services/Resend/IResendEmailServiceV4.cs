@@ -1,6 +1,6 @@
 using Resend;
 
-namespace TestResend.Services
+namespace TestResend.Services.Resend
 {
     public interface IResendEmailServiceV4
     {

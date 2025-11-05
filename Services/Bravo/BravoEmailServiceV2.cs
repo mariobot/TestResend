@@ -2,7 +2,7 @@ using sib_api_v3_sdk.Api;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
-namespace TestResend.Services
+namespace TestResend.Services.Bravo
 {
     /// <summary>
     /// Alternative implementation of Brevo email service with singleton API instance

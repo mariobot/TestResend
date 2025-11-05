@@ -1,6 +1,6 @@
 using Resend;
 
-namespace TestResend.Services
+namespace TestResend.Services.Resend
 {
     /// <summary>
     /// Alternative implementation with improved structure and return values

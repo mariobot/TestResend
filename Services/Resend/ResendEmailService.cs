@@ -1,7 +1,7 @@
 using Resend;
 using System.Text;
 
-namespace TestResend.Services
+namespace TestResend.Services.Resend
 {
     public class ResendEmailService
     {

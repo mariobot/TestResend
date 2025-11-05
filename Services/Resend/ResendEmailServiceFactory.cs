@@ -1,4 +1,5 @@
 using Resend;
+using TestResend.Services.Resend;
 
 namespace TestResend.Services
 {
