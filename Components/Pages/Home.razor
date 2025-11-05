@@ -2,6 +2,65 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Welcome to TestResend!</h1>
 
-Welcome to your new app.
+<p class="lead">
+    👋 Hello and welcome! This simple Blazor app lets you send emails using multiple providers—Resend, Twilio (SendGrid), Bravo, and Mailchimp.
+</p>
+<p>
+    Explore the navigation menu to try out different email features like bulk sending, attachments, CC/BCC, templates, and more.
+    <br />
+    Whether you're testing, learning, or building, you'll find easy-to-use forms and instant feedback.
+</p>
+<p>
+    Ready to get started? Select an email feature from the menu and see how each provider works!
+</p>
+<p class="text-muted">
+    If you need help, check the README or reach out to the project maintainer.
+</p>
+
+<h2 class="mt-5">Quick Actions</h2>
+<div class="row g-4">
+    <div class="col-md-4 text-center">
+        <NavLink href="/SendEmail" class="text-decoration-none">
+            <img src="images/send-email.png" alt="Send Email" style="width:64px; height:64px;" />
+            <div class="mt-2 fw-bold">Send Email</div>
+            <div class="text-muted small">Send a single email using any provider</div>
+        </NavLink>
+    </div>
+    <div class="col-md-4 text-center">
+        <NavLink href="/SendBulk" class="text-decoration-none">
+            <img src="images/bulk-email.png" alt="Bulk Email" style="width:64px; height:64px;" />
+            <div class="mt-2 fw-bold">Send Bulk Email</div>
+            <div class="text-muted small">Send to multiple recipients at once</div>
+        </NavLink>
+    </div>
+    <div class="col-md-4 text-center">
+        <NavLink href="/SendAttachment" class="text-decoration-none">
+            <img src="images/attachment-email.png" alt="Attachment Email" style="width:64px; height:64px;" />
+            <div class="mt-2 fw-bold">Send Attachment</div>
+            <div class="text-muted small">Include files in your email</div>
+        </NavLink>
+    </div>
+    <div class="col-md-4 text-center">
+        <NavLink href="/ResendSendCcBcc" class="text-decoration-none">
+            <img src="images/ccbcc-email.png" alt="CC/BCC Email" style="width:64px; height:64px;" />
+            <div class="mt-2 fw-bold">Send CC/BCC</div>
+            <div class="text-muted small">Add CC and BCC recipients</div>
+        </NavLink>
+    </div>
+    <div class="col-md-4 text-center">
+        <NavLink href="/ResendSendReplyTo" class="text-decoration-none">
+            <img src="images/replyto-email.png" alt="Reply-To Email" style="width:64px; height:64px;" />
+            <div class="mt-2 fw-bold">Send Reply-To</div>
+            <div class="text-muted small">Set a custom reply-to address</div>
+        </NavLink>
+    </div>
+    <div class="col-md-4 text-center">
+        <NavLink href="/template-email-builder2" class="text-decoration-none">
+            <img src="images/template-email.png" alt="Template Email" style="width:64px; height:64px;" />
+            <div class="mt-2 fw-bold">Email Template Builder</div>
+            <div class="text-muted small">Design and send beautiful emails</div>
+        </NavLink>
+    </div>
+</div>
