@@ -2,7 +2,9 @@
 using TestResend.Components;
 using TestResend.Services;
 using TestResend.Services.Bravo;
+using TestResend.Services.MailChip;
 using TestResend.Services.Resend;
+using TestResend.Services.Twilio;
 
 namespace TestResend
 {
@@ -47,6 +49,12 @@ namespace TestResend
             builder.Services.AddTransient<BravoEmailServiceV2>();
             builder.Services.AddTransient<BravoEmailServiceFactory>();
             builder.Services.AddTransient<BravoEmailServiceV4>();
+
+            // Register MailChip Email Service
+            builder.Services.AddTransient<MailChipEmailService>();
+
+            // Requister Twilio SendGrid Email Service
+            builder.Services.AddTransient<TwilitoEmailService>();
 
             var app = builder.Build();
 

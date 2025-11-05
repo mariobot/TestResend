@@ -3,6 +3,61 @@
   "WorkspaceRootPath": "C:\\Desarrollo\\TestResend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\layout\\emailprovider.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\layout\\emailprovider.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\twilio\\twilitoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\twilio\\twilitoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\mailchip\\mailchipemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\mailchip\\mailchipemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\resend\\resendemailservicev3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\resend\\resendemailservicev3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\resend\\resendemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\resend\\resendemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\resend\\iresendemailservicev4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\resend\\iresendemailservicev4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\bravo\\bravoemailservicev3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\bravo\\bravoemailservicev3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\sendemail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\sendemail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\resendsendattachment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\resendsendattachment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\resendsendreplyto.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\resendsendreplyto.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\testresend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:testresend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\templates\\exampleusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:templates\\exampleusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,35 +66,8 @@
       "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\testresend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:testresend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\sendtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\sendtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\resendsendreplyto.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\resendsendreplyto.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\resendsendattachment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\resendsendattachment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\resendemailservicev3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\resendemailservicev3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -50,28 +78,20 @@
       "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\sendbulk.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\sendemail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\sendemail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\components\\pages\\sendattachment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:components\\pages\\sendattachment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\resendemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\resendemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\bravo\\ibravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\bravo\\ibravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\ibravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\ibravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\bravo\\bravoemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\bravo\\bravoemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\bravoemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\bravoemailservicev2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\bravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\bravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|c:\\desarrollo\\testresend\\services\\bravo\\bravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76C9B63E-6EBB-46E0-B435-9CEA199568FC}|TestResend.csproj|solutionrelative:services\\bravo\\bravoemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mario\\AppData\\Local\\SourceServer\\0cce612a5fde49207dd2572c5a597789b9e89e09ec346c5f0b9290bba372baf5\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -84,20 +104,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "EmailProvider.razor",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Layout\\EmailProvider.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\EmailProvider.razor",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Components\\Layout\\EmailProvider.razor",
+              "RelativeToolTip": "Components\\Layout\\EmailProvider.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T00:36:54.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
               "ToolTip": "C:\\Desarrollo\\TestResend\\Components\\Layout\\NavMenu.razor",
               "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAD0AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-31T13:20:02.731Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IResendEmailServiceV4.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Resend\\IResendEmailServiceV4.cs",
+              "RelativeDocumentMoniker": "Services\\Resend\\IResendEmailServiceV4.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Resend\\IResendEmailServiceV4.cs",
+              "RelativeToolTip": "Services\\Resend\\IResendEmailServiceV4.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T00:16:11.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MailChipEmailService.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\MailChip\\MailChipEmailService.cs",
+              "RelativeDocumentMoniker": "Services\\MailChip\\MailChipEmailService.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\MailChip\\MailChipEmailService.cs",
+              "RelativeToolTip": "Services\\MailChip\\MailChipEmailService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T00:15:10.592Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -153,20 +213,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExampleUsage.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
-              "RelativeDocumentMoniker": "Templates\\ExampleUsage.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
-              "RelativeToolTip": "Templates\\ExampleUsage.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ResendEmailServiceV2.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Resend\\ResendEmailServiceV2.cs",
+              "RelativeDocumentMoniker": "Services\\Resend\\ResendEmailServiceV2.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Resend\\ResendEmailServiceV2.cs",
+              "RelativeToolTip": "Services\\Resend\\ResendEmailServiceV2.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T04:57:12.174Z",
+              "WhenOpened": "2025-11-03T03:20:21.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ResendEmailServiceV3.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Resend\\ResendEmailServiceV3.cs",
+              "RelativeDocumentMoniker": "Services\\Resend\\ResendEmailServiceV3.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Resend\\ResendEmailServiceV3.cs",
+              "RelativeToolTip": "Services\\Resend\\ResendEmailServiceV3.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAowEoAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T03:20:37.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
+              "RelativeDocumentMoniker": "..\\..\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
+              "ToolTip": "C:\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
+              "RelativeToolTip": "..\\..\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-31T13:04:33.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAqwDgAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T04:24:32.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TwilitoEmailService.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Twilio\\TwilitoEmailService.cs",
+              "RelativeDocumentMoniker": "Services\\Twilio\\TwilitoEmailService.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Twilio\\TwilitoEmailService.cs",
+              "RelativeToolTip": "Services\\Twilio\\TwilitoEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T00:15:32.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BravoEmailServiceV3.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\BravoEmailServiceV3.cs",
+              "RelativeDocumentMoniker": "Services\\Bravo\\BravoEmailServiceV3.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\BravoEmailServiceV3.cs",
+              "RelativeToolTip": "Services\\Bravo\\BravoEmailServiceV3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T00:15:50.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ResendSendReplyTo.razor",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\ResendSendReplyTo.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ResendSendReplyTo.razor",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Components\\Pages\\ResendSendReplyTo.razor",
+              "RelativeToolTip": "Components\\Pages\\ResendSendReplyTo.razor",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAE4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T03:32:37.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "TestResend.csproj",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\TestResend.csproj",
               "RelativeDocumentMoniker": "TestResend.csproj",
@@ -179,31 +317,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAqwD0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T04:24:32.873Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ResendSendReplyTo.razor",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\ResendSendReplyTo.razor",
-              "RelativeDocumentMoniker": "Components\\Pages\\ResendSendReplyTo.razor",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Components\\Pages\\ResendSendReplyTo.razor",
-              "RelativeToolTip": "Components\\Pages\\ResendSendReplyTo.razor",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAE0AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T03:32:37.79Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "ResendSendAttachment.razor",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\ResendSendAttachment.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\ResendSendAttachment.razor",
@@ -211,35 +325,38 @@
               "RelativeToolTip": "Components\\Pages\\ResendSendAttachment.razor",
               "ViewState": "AgIAAGAAAAAAAAAAAAAAAHsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T03:28:39.582Z"
+              "WhenOpened": "2025-11-03T03:28:39.582Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ResendEmailServiceV3.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\ResendEmailServiceV3.cs",
-              "RelativeDocumentMoniker": "Services\\ResendEmailServiceV3.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\ResendEmailServiceV3.cs",
-              "RelativeToolTip": "Services\\ResendEmailServiceV3.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAowEoAAABPAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "SendEmail.razor",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\SendEmail.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SendEmail.razor",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Components\\Pages\\SendEmail.razor",
+              "RelativeToolTip": "Components\\Pages\\SendEmail.razor",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwDwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-31T13:12:36.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ExampleUsage.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
+              "RelativeDocumentMoniker": "Templates\\ExampleUsage.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
+              "RelativeToolTip": "Templates\\ExampleUsage.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T03:20:37.052Z"
+              "WhenOpened": "2025-11-04T04:57:12.174Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "secrets.json",
-              "DocumentMoniker": "C:\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
-              "RelativeDocumentMoniker": "..\\..\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
-              "ToolTip": "C:\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
-              "RelativeToolTip": "..\\..\\Users\\mario\\AppData\\Roaming\\Microsoft\\UserSecrets\\e1b8ecf3-d9c2-4f67-96c1-9c7977092c74\\secrets.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-31T13:04:33.669Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 19,
               "Title": "SendAttachment.razor",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\SendAttachment.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\SendAttachment.razor",
@@ -247,11 +364,12 @@
               "RelativeToolTip": "Components\\Pages\\SendAttachment.razor",
               "ViewState": "AgIAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T03:34:01.096Z"
+              "WhenOpened": "2025-11-03T03:34:01.096Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 15,
               "Title": "Readme.md",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Readme.md",
               "RelativeDocumentMoniker": "Readme.md",
@@ -264,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 16,
               "Title": "SendTemplate.razor",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\SendTemplate.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\SendTemplate.razor",
@@ -272,11 +390,12 @@
               "RelativeToolTip": "Components\\Pages\\SendTemplate.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-02T18:09:45.835Z"
+              "WhenOpened": "2025-11-02T18:09:45.835Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "SendBulk.razor",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\SendBulk.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\SendBulk.razor",
@@ -284,11 +403,12 @@
               "RelativeToolTip": "Components\\Pages\\SendBulk.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T03:34:07.146Z"
+              "WhenOpened": "2025-11-03T03:34:07.146Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "Home.razor",
               "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
@@ -300,56 +420,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 20,
               "Title": "IBravoEmailService.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\IBravoEmailService.cs",
-              "RelativeDocumentMoniker": "Services\\IBravoEmailService.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\IBravoEmailService.cs",
-              "RelativeToolTip": "Services\\IBravoEmailService.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\IBravoEmailService.cs",
+              "RelativeDocumentMoniker": "Services\\Bravo\\IBravoEmailService.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\IBravoEmailService.cs",
+              "RelativeToolTip": "Services\\Bravo\\IBravoEmailService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T03:25:01.671Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SendEmail.razor",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Components\\Pages\\SendEmail.razor",
-              "RelativeDocumentMoniker": "Components\\Pages\\SendEmail.razor",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Components\\Pages\\SendEmail.razor",
-              "RelativeToolTip": "Components\\Pages\\SendEmail.razor",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAD8AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-31T13:12:36.901Z",
+              "WhenOpened": "2025-11-03T03:25:01.671Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ResendEmailServiceV2.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\ResendEmailServiceV2.cs",
-              "RelativeDocumentMoniker": "Services\\ResendEmailServiceV2.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\ResendEmailServiceV2.cs",
-              "RelativeToolTip": "Services\\ResendEmailServiceV2.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T03:20:21.996Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 21,
               "Title": "BravoEmailServiceV2.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\BravoEmailServiceV2.cs",
-              "RelativeDocumentMoniker": "Services\\BravoEmailServiceV2.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\BravoEmailServiceV2.cs",
-              "RelativeToolTip": "Services\\BravoEmailServiceV2.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\BravoEmailServiceV2.cs",
+              "RelativeDocumentMoniker": "Services\\Bravo\\BravoEmailServiceV2.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\BravoEmailServiceV2.cs",
+              "RelativeToolTip": "Services\\Bravo\\BravoEmailServiceV2.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T18:08:46.074Z"
+              "WhenOpened": "2025-11-02T18:08:46.074Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 23,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\mario\\AppData\\Local\\SourceServer\\0cce612a5fde49207dd2572c5a597789b9e89e09ec346c5f0b9290bba372baf5\\Program.cs",
               "RelativeDocumentMoniker": "..\\..\\Users\\mario\\AppData\\Local\\SourceServer\\0cce612a5fde49207dd2572c5a597789b9e89e09ec346c5f0b9290bba372baf5\\Program.cs",
@@ -361,12 +458,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 22,
               "Title": "BravoEmailService.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\BravoEmailService.cs",
-              "RelativeDocumentMoniker": "Services\\BravoEmailService.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\BravoEmailService.cs",
-              "RelativeToolTip": "Services\\BravoEmailService.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\BravoEmailService.cs",
+              "RelativeDocumentMoniker": "Services\\Bravo\\BravoEmailService.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Services\\Bravo\\BravoEmailService.cs",
+              "RelativeToolTip": "Services\\Bravo\\BravoEmailService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAACIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T23:13:54.489Z",

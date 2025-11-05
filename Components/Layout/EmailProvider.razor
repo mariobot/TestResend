@@ -1,0 +1,41 @@
+﻿<h3>Email Provider Selection</h3>
+
+<div class="d-flex gap-3 mb-3">
+    @foreach (var provider in Providers)
+    {
+        <div class="provider-select @(SelectedProvider == provider.Name ? "selected" : "")"
+             style="cursor:pointer; border:1px solid #ccc; border-radius:8px; padding:8px; text-align:center; width:120px;"
+             @onclick="() => SelectProvider(provider.Name)">
+            <img src="@provider.ImagePath" alt="@provider.Name" style="width:48px; height:48px; margin-bottom:8px;" />
+            <div>@provider.Name</div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string SelectedProvider { get; set; } = "Resend";
+
+    [Parameter]
+    public EventCallback<string> SelectedProviderChanged { get; set; }
+
+    private List<ProviderInfo> Providers = new()
+    {
+        new ProviderInfo { Name = "Resend", ImagePath = "images/resend.png" },
+        new ProviderInfo { Name = "Twilio", ImagePath = "images/twilio.png" },
+        new ProviderInfo { Name = "Bravo", ImagePath = "images/bravo.png" },
+        new ProviderInfo { Name = "Mailchimp", ImagePath = "images/mailchimp.png" }
+    };
+
+    private async Task SelectProvider(string provider)
+    {
+        SelectedProvider = provider;
+        await SelectedProviderChanged.InvokeAsync(provider);
+    }
+
+    private class ProviderInfo
+    {
+        public string Name { get; set; } = "";
+        public string ImagePath { get; set; } = "";
+    }
+}

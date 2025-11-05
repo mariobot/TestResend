@@ -52,9 +52,17 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Mandrill": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Resend": {
               "target": "Package",
               "version": "[0.1.6, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.29.3, )"
             },
             "sib_api_v3_sdk": {
               "target": "Package",
