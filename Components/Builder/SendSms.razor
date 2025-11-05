@@ -1,0 +1,171 @@
+﻿@inject TestResend.Bridge.BridgeSmsApp BridgeSmsApp
+
+<h3>Send SMS</h3>
+
+<div class="mb-3">
+    <label for="provider" class="form-label">Choose SMS Provider:</label>
+    <select id="provider" class="form-select" @bind="selectedProvider" @bind:event="onchange">
+        <option value="Brevo">Brevo</option>
+        <!-- Add more providers as needed -->
+    </select>
+</div>
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? "SMS sent successfully!" : $"Failed to send SMS: {errorMessage}")
+    </div>
+}
+
+<EditForm Model="smsModel" OnValidSubmit="SendSmsAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="sender" class="form-label">Sender Name/Number:</label>
+        <InputText id="sender" class="form-control" @bind-Value="smsModel.Sender" />
+    </div>
+    <div class="mb-3">
+        <label for="recipient" class="form-label">Recipient Number:</label>
+        <InputText id="recipient" class="form-control" @bind-Value="smsModel.Recipient" placeholder="+1234567890" />
+    </div>
+    <div class="mb-3">
+        <label for="text" class="form-label">Message:</label>
+        <InputTextArea id="text" class="form-control" @bind-Value="smsModel.Text" rows="3" />
+    </div>
+    <button type="submit" class="btn btn-primary" disabled="@isLoading">
+        @if (isLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Sending...</span>
+        }
+        else
+        {
+            <span>Send SMS</span>
+        }
+    </button>
+</EditForm>
+
+<hr />
+
+<h4>Send Bulk SMS</h4>
+<EditForm Model="bulkSmsModel" OnValidSubmit="SendBulkSmsAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="bulkSender" class="form-label">Sender Name/Number:</label>
+        <InputText id="bulkSender" class="form-control" @bind-Value="bulkSmsModel.Sender" />
+    </div>
+    <div class="mb-3">
+        <label for="bulkRecipients" class="form-label">Recipient Numbers (one per line):</label>
+        <InputTextArea id="bulkRecipients" class="form-control" @bind-Value="bulkSmsModel.Recipients" rows="4" placeholder="+1234567890&#10;+0987654321" />
+        <small class="text-muted">Enter each recipient number on a new line.</small>
+    </div>
+    <div class="mb-3">
+        <label for="bulkText" class="form-label">Message:</label>
+        <InputTextArea id="bulkText" class="form-control" @bind-Value="bulkSmsModel.Text" rows="3" />
+    </div>
+    <button type="submit" class="btn btn-secondary" disabled="@isBulkLoading">
+        @if (isBulkLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Sending...</span>
+        }
+        else
+        {
+            <span>Send Bulk SMS</span>
+        }
+    </button>
+</EditForm>
+
+@code {
+    private SmsModel smsModel = new();
+    private BulkSmsModel bulkSmsModel = new();
+    private bool? success;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+    private bool isBulkLoading = false;
+    private string selectedProvider = "Brevo";
+
+    public class SmsModel
+    {
+        public string Sender { get; set; } = "TestSender";
+        public string Recipient { get; set; } = "";
+        public string Text { get; set; } = "";
+    }
+
+    public class BulkSmsModel
+    {
+        public string Sender { get; set; } = "TestSender";
+        public string Recipients { get; set; } = "";
+        public string Text { get; set; } = "";
+    }
+
+    private async Task SendSmsAsync()
+    {
+        isLoading = true;
+        success = null;
+        errorMessage = string.Empty;
+
+        try
+        {
+            success = await BridgeSmsApp.SendSmsAsync(
+                selectedProvider,
+                smsModel.Sender,
+                smsModel.Recipient,
+                smsModel.Text
+            );
+            errorMessage = success == true ? string.Empty : "SMS sending failed. Please check the details and try again.";
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task SendBulkSmsAsync()
+    {
+        isBulkLoading = true;
+        success = null;
+        errorMessage = string.Empty;
+
+        try
+        {
+            var recipients = bulkSmsModel.Recipients
+                .Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries)
+                .Select(r => r.Trim())
+                .Where(r => !string.IsNullOrWhiteSpace(r))
+                .ToList();
+
+            if (recipients.Count == 0)
+            {
+                errorMessage = "Please enter at least one recipient number.";
+                success = false;
+                return;
+            }
+
+            success = await BridgeSmsApp.SendBulkSmsAsync(
+                selectedProvider,
+                bulkSmsModel.Sender,
+                recipients,
+                bulkSmsModel.Text
+            );
+            errorMessage = success == true ? string.Empty : "Bulk SMS sending failed. Please check the details and try again.";
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isBulkLoading = false;
+        }
+    }
+}
