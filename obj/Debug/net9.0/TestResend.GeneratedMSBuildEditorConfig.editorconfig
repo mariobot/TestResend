@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFNlbmRSZXBseVRvQnVpbGRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Desarrollo/TestResend/Components/Builder/SendSms.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFNlbmRTbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Desarrollo/TestResend/Components/Builder/TemplateEmailBuilder.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFRlbXBsYXRlRW1haWxCdWlsZGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
