@@ -24,6 +24,30 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Desarrollo/TestResend/Components/Builder/SendAttachmentBuilder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFNlbmRBdHRhY2htZW50QnVpbGRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo/TestResend/Components/Builder/SendBulkBuilder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFNlbmRCdWxrQnVpbGRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo/TestResend/Components/Builder/SendCcBccBuilder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFNlbmRDY0JjY0J1aWxkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo/TestResend/Components/Builder/SendEmailBuilder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFNlbmRFbWFpbEJ1aWxkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo/TestResend/Components/Builder/SendReplyToBuilder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFNlbmRSZXBseVRvQnVpbGRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo/TestResend/Components/Builder/TemplateEmailBuilder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdWlsZGVyXFRlbXBsYXRlRW1haWxCdWlsZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Desarrollo/TestResend/Components/Layout/EmailProvider.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcRW1haWxQcm92aWRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

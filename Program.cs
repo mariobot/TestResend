@@ -1,4 +1,5 @@
 ﻿using Resend;
+using TestResend.Bridge;
 using TestResend.Components;
 using TestResend.Services;
 using TestResend.Services.Bravo;
@@ -55,6 +56,10 @@ namespace TestResend
 
             // Requister Twilio SendGrid Email Service
             builder.Services.AddTransient<TwilitoEmailService>();
+
+            // Register the Bridge
+            // Register BridgeApp
+            builder.Services.AddTransient<BridgeApp>();
 
             var app = builder.Build();
 
