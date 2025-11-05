@@ -44,6 +44,56 @@ This folder contains professional email templates that can be used with the Emai
 - Rounded elements
 - Inviting and friendly design
 
+### 5. Tech Startup (TechStartup.html)
+**Style:** Vibrant Green with Modern Gradients
+**Best for:** Tech companies, startups, product launches, updates
+**Features:**
+- Dynamic green gradient header
+- Animated pulse effects
+- Feature cards with hover effects
+- Badge elements
+- Modern, energetic design
+
+### 6. Elegant Newsletter (ElegantNewsletter.html)
+**Style:** Sophisticated Pink/Magenta
+**Best for:** Fashion, lifestyle brands, newsletters, announcements
+**Features:**
+- Elegant serif typography
+- Decorative ornaments
+- Italicized styling
+- Luxurious gradient backgrounds
+- Editorial-style layout
+
+### 7. Dark Mode (DarkMode.html)
+**Style:** Dark Theme with Cyan Accents
+**Best for:** Tech notifications, developer tools, gaming, modern apps
+**Features:**
+- Terminal-inspired design
+- Monospace typography
+- Cyan neon accents
+- Code-style formatting
+- Developer-friendly aesthetic
+
+### 8. Celebration (Celebration.html)
+**Style:** Festive Rainbow Gradient
+**Best for:** Achievements, milestones, congratulations, special events
+**Features:**
+- Animated confetti effects
+- Rainbow gradient header
+- Bouncing animations
+- Party-themed icons
+- Joyful, energetic design
+
+### 9. Vintage Newspaper (VintageNews.html)
+**Style:** Classic Newspaper Layout
+**Best for:** News updates, formal announcements, traditional communications
+**Features:**
+- Newspaper-style typography
+- Vintage color palette (browns and beiges)
+- Classified ads section style
+- Double border decorations
+- Retro, professional aesthetic
+
 ## Usage
 
 ### In the Template Builder Page

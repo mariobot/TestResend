@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EmailTitle}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f0fdf4;
+        }
+        
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -1px;
+        }
+        
+        .header-subtitle {
+            color: #d1fae5;
+            font-size: 16px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 45px 40px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .greeting {
+            font-size: 32px;
+            font-weight: 800;
+            color: #065f46;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #374151;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .stats-container {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 35px 0;
+            text-align: center;
+            border: 2px solid #a7f3d0;
+        }
+        
+        .stats-label {
+            font-size: 13px;
+            color: #047857;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+        
+        .stats-value {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 35px 0;
+        }
+        
+        .feature-card {
+            background-color: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: #10b981;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-label {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .feature-value {
+            font-size: 18px;
+            color: #111827;
+            font-weight: 700;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+            transition: all 0.3s;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.45);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1fae5, transparent);
+            margin: 40px 0;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            padding: 45px 40px;
+            text-align: center;
+            color: #d1fae5;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .social-links {
+            margin: 30px 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(209, 250, 229, 0.2);
+        }
+        
+        .social-link {
+            display: inline-block;
+            margin: 0 15px;
+            color: #6ee7b7;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: #ffffff;
+        }
+        
+        .small-text {
+            font-size: 12px;
+            color: #6ee7b7;
+            margin-top: 25px;
+            line-height: 1.7;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .content, .header, .footer {
+                padding: 30px 20px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .greeting {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">{{CompanyName}}</div>
+            <div class="header-subtitle">{{CompanyTagline}}</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="badge">New Update</div>
+            
+            <div class="greeting">
+                Hi {{CustomerName}}! 🚀
+            </div>
+            
+            <div class="message">
+                {{MainMessage}}
+            </div>
+            
+            <!-- Stats Container -->
+            <div class="stats-container">
+                <div class="stats-label">{{HighlightLabel}}</div>
+                <div class="stats-value">{{HighlightValue}}</div>
+            </div>
+            
+            <!-- Feature Grid -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-label">{{Field1Label}}</div>
+                    <div class="feature-value">{{Field1Value}}</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-label">{{Field2Label}}</div>
+                    <div class="feature-value">{{Field2Value}}</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-label">{{Field3Label}}</div>
+                    <div class="feature-value">{{Field3Value}}</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <div class="feature-label">{{Field4Label}}</div>
+                    <div class="feature-value">{{Field4Value}}</div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="button-container">
+                <a href="{{ButtonLink}}" class="button">{{ButtonText}}</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- Additional Message -->
+            <div class="message">
+                {{SecondaryMessage}}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">{{CompanyName}}</div>
+            <div class="footer-text">
+                {{CompanyAddress}}<br>
+                {{CompanyPhone}} | {{CompanyEmail}}
+            </div>
+            
+            <div class="social-links">
+                <a href="{{WebsiteUrl}}" class="social-link">Website</a>
+                <a href="{{FacebookUrl}}" class="social-link">Facebook</a>
+                <a href="{{TwitterUrl}}" class="social-link">Twitter</a>
+                <a href="{{LinkedInUrl}}" class="social-link">LinkedIn</a>
+            </div>
+            
+            <div class="small-text">
+                {{DisclaimerText}}<br>
+                <a href="{{UnsubscribeLink}}" style="color: #6ee7b7; text-decoration: none;">Unsubscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

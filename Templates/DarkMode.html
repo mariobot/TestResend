@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EmailTitle}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', 'Consolas', monospace;
+            line-height: 1.6;
+            color: #e5e5e5;
+            background-color: #0a0a0a;
+        }
+        
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0e7490 0%, #0891b2 50%, #06b6d4 100%);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #22d3ee;
+        }
+        
+        .terminal-indicator {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #06b6d4;
+            opacity: 0.7;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #22d3ee;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        
+        .header-subtitle {
+            color: #a5f3fc;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        .content {
+            padding: 45px 40px;
+            background-color: #1a1a1a;
+        }
+        
+        .prompt {
+            color: #22d3ee;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .greeting {
+            font-size: 24px;
+            font-weight: 700;
+            color: #a5f3fc;
+            margin-bottom: 25px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .message {
+            font-size: 15px;
+            color: #d1d5db;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-block {
+            background-color: #0a0a0a;
+            border: 1px solid #0891b2;
+            border-left: 4px solid #22d3ee;
+            padding: 30px;
+            margin: 35px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .code-icon {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .code-label {
+            font-size: 11px;
+            color: #0891b2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .code-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #22d3ee;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin: 35px 0;
+            background-color: #0891b2;
+            border: 1px solid #0891b2;
+        }
+        
+        .data-cell {
+            background-color: #0a0a0a;
+            padding: 20px;
+        }
+        
+        .data-cell-label {
+            font-size: 10px;
+            color: #06b6d4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .data-cell-value {
+            font-size: 16px;
+            color: #e5e5e5;
+            font-weight: 700;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border: 2px solid #22d3ee;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+        }
+        
+        .button:hover {
+            background: #0a0a0a;
+            color: #22d3ee !important;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #0891b2, transparent);
+            margin: 40px 0;
+        }
+        
+        .footer {
+            background-color: #0a0a0a;
+            padding: 45px 40px;
+            text-align: center;
+            color: #6b7280;
+            border-top: 1px solid #2a2a2a;
+        }
+        
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #22d3ee;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .social-links {
+            margin: 30px 0;
+            padding-top: 25px;
+            border-top: 1px solid #2a2a2a;
+        }
+        
+        .social-link {
+            display: inline-block;
+            margin: 0 12px;
+            color: #0891b2;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: #22d3ee;
+        }
+        
+        .small-text {
+            font-size: 10px;
+            color: #4b5563;
+            margin-top: 25px;
+            line-height: 1.7;
+            font-family: 'Courier New', monospace;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .content, .header, .footer {
+                padding: 30px 20px;
+            }
+            
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="terminal-indicator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="logo">{{CompanyName}}</div>
+            <div class="header-subtitle">{{CompanyTagline}}</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="prompt">$ system_message --user={{CustomerName}}</div>
+            
+            <div class="greeting">
+                > Hello, {{CustomerName}}
+            </div>
+            
+            <div class="message">
+                {{MainMessage}}
+            </div>
+            
+            <!-- Code Block -->
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-icon">▸</span>
+                    <span class="code-label">{{HighlightLabel}}</span>
+                </div>
+                <div class="code-value">{{HighlightValue}}</div>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="data-grid">
+                <div class="data-cell">
+                    <div class="data-cell-label">{{Field1Label}}</div>
+                    <div class="data-cell-value">{{Field1Value}}</div>
+                </div>
+                <div class="data-cell">
+                    <div class="data-cell-label">{{Field2Label}}</div>
+                    <div class="data-cell-value">{{Field2Value}}</div>
+                </div>
+                <div class="data-cell">
+                    <div class="data-cell-label">{{Field3Label}}</div>
+                    <div class="data-cell-value">{{Field3Value}}</div>
+                </div>
+                <div class="data-cell">
+                    <div class="data-cell-label">{{Field4Label}}</div>
+                    <div class="data-cell-value">{{Field4Value}}</div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="button-container">
+                <a href="{{ButtonLink}}" class="button">{{ButtonText}}</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- Additional Message -->
+            <div class="message">
+                {{SecondaryMessage}}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">{{CompanyName}}</div>
+            <div class="footer-text">
+                {{CompanyAddress}}<br>
+                {{CompanyPhone}} | {{CompanyEmail}}
+            </div>
+            
+            <div class="social-links">
+                <a href="{{WebsiteUrl}}" class="social-link">[Website]</a>
+                <a href="{{FacebookUrl}}" class="social-link">[Facebook]</a>
+                <a href="{{TwitterUrl}}" class="social-link">[Twitter]</a>
+                <a href="{{LinkedInUrl}}" class="social-link">[LinkedIn]</a>
+            </div>
+            
+            <div class="small-text">
+                {{DisclaimerText}}<br>
+                <a href="{{UnsubscribeLink}}" style="color: #0891b2; text-decoration: none;">$ unsubscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EmailTitle}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            line-height: 1.7;
+            color: #2c2416;
+            background-color: #f5f1e8;
+        }
+        
+        .email-wrapper {
+            max-width: 650px;
+            margin: 30px auto;
+            background-color: #faf8f3;
+            border: 3px double #8b6f47;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header {
+            background-color: #2c2416;
+            padding: 8px 0;
+            text-align: center;
+            border-bottom: 5px solid #8b6f47;
+        }
+        
+        .edition-banner {
+            background-color: #8b6f47;
+            color: #faf8f3;
+            padding: 3px 0;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+        
+        .newspaper-title {
+            background-color: #2c2416;
+            padding: 25px 40px;
+            text-align: center;
+            border-top: 2px solid #8b6f47;
+            border-bottom: 2px solid #8b6f47;
+        }
+        
+        .logo {
+            font-size: 52px;
+            font-weight: 400;
+            color: #faf8f3;
+            margin-bottom: 8px;
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-subtitle {
+            color: #d4c5a9;
+            font-size: 11px;
+            font-style: italic;
+            letter-spacing: 2px;
+            border-top: 1px solid #8b6f47;
+            padding-top: 8px;
+            margin-top: 8px;
+        }
+        
+        .content {
+            padding: 40px;
+            background-color: #faf8f3;
+        }
+        
+        .date-line {
+            text-align: center;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #5c4a2f;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2c2416;
+        }
+        
+        .headline {
+            font-size: 38px;
+            font-weight: 700;
+            color: #2c2416;
+            margin-bottom: 15px;
+            text-align: center;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px double #8b6f47;
+            padding-bottom: 15px;
+        }
+        
+        .subheadline {
+            font-size: 16px;
+            color: #5c4a2f;
+            margin-bottom: 30px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .lead-text {
+            font-size: 22px;
+            color: #2c2416;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #3e3527;
+            margin-bottom: 25px;
+            line-height: 1.9;
+            text-align: justify;
+            column-count: 1;
+        }
+        
+        .feature-box {
+            background-color: #e8dfc9;
+            border: 3px double #8b6f47;
+            padding: 30px;
+            margin: 35px 0;
+            text-align: center;
+        }
+        
+        .feature-ornament {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #8b6f47;
+        }
+        
+        .feature-label {
+            font-size: 12px;
+            color: #5c4a2f;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .feature-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2c2416;
+        }
+        
+        .classified-section {
+            background-color: #ffffff;
+            border: 2px solid #8b6f47;
+            padding: 25px;
+            margin: 35px 0;
+        }
+        
+        .classified-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c2416;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8b6f47;
+        }
+        
+        .classified-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dotted #8b6f47;
+        }
+        
+        .classified-item:last-child {
+            border-bottom: none;
+        }
+        
+        .classified-label {
+            font-size: 13px;
+            color: #5c4a2f;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .classified-value {
+            font-size: 14px;
+            color: #2c2416;
+            font-weight: 600;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #2c2416;
+            color: #faf8f3 !important;
+            text-decoration: none;
+            border: 3px double #8b6f47;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #8b6f47;
+            color: #ffffff !important;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 35px 0;
+            color: #8b6f47;
+            font-size: 24px;
+        }
+        
+        .footer {
+            background-color: #2c2416;
+            padding: 40px;
+            text-align: center;
+            color: #d4c5a9;
+            border-top: 5px solid #8b6f47;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #faf8f3;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+        
+        .social-links {
+            margin: 30px 0;
+            padding-top: 25px;
+            border-top: 1px solid #8b6f47;
+        }
+        
+        .social-link {
+            display: inline-block;
+            margin: 0 15px;
+            color: #d4c5a9;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .social-link:hover {
+            color: #faf8f3;
+        }
+        
+        .small-text {
+            font-size: 10px;
+            color: #8b6f47;
+            margin-top: 25px;
+            line-height: 1.8;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .content, .footer {
+                padding: 25px 20px;
+            }
+            
+            .headline {
+                font-size: 26px;
+            }
+            
+            .classified-item {
+                flex-direction: column;
+            }
+            
+            .classified-value {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="edition-banner">Special Edition</div>
+        </div>
+        
+        <div class="newspaper-title">
+            <div class="logo">{{CompanyName}}</div>
+            <div class="header-subtitle">{{CompanyTagline}}</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="date-line">Newsletter Dispatch</div>
+            
+            <div class="headline">
+                Breaking News
+            </div>
+            
+            <div class="subheadline">Exclusive Report for {{CustomerName}}</div>
+            
+            <div class="message">
+                {{MainMessage}}
+            </div>
+            
+            <!-- Feature Box -->
+            <div class="feature-box">
+                <div class="feature-ornament">⬥ ⬥ ⬥</div>
+                <div class="feature-label">{{HighlightLabel}}</div>
+                <div class="feature-value">{{HighlightValue}}</div>
+            </div>
+            
+            <!-- Classified Section -->
+            <div class="classified-section">
+                <div class="classified-header">Important Details</div>
+                
+                <div class="classified-item">
+                    <span class="classified-label">{{Field1Label}}</span>
+                    <span class="classified-value">{{Field1Value}}</span>
+                </div>
+                <div class="classified-item">
+                    <span class="classified-label">{{Field2Label}}</span>
+                    <span class="classified-value">{{Field2Value}}</span>
+                </div>
+                <div class="classified-item">
+                    <span class="classified-label">{{Field3Label}}</span>
+                    <span class="classified-value">{{Field3Value}}</span>
+                </div>
+                <div class="classified-item">
+                    <span class="classified-label">{{Field4Label}}</span>
+                    <span class="classified-value">{{Field4Value}}</span>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="button-container">
+                <a href="{{ButtonLink}}" class="button">{{ButtonText}}</a>
+            </div>
+            
+            <div class="divider">❦ ❦ ❦</div>
+            
+            <!-- Additional Message -->
+            <div class="message">
+                {{SecondaryMessage}}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">{{CompanyName}}</div>
+            <div class="footer-text">
+                {{CompanyAddress}}<br>
+                {{CompanyPhone}} | {{CompanyEmail}}
+            </div>
+            
+            <div class="social-links">
+                <a href="{{WebsiteUrl}}" class="social-link">Website</a>
+                <a href="{{FacebookUrl}}" class="social-link">Facebook</a>
+                <a href="{{TwitterUrl}}" class="social-link">Twitter</a>
+                <a href="{{LinkedInUrl}}" class="social-link">LinkedIn</a>
+            </div>
+            
+            <div class="small-text">
+                {{DisclaimerText}}<br>
+                <a href="{{UnsubscribeLink}}" style="color: #8b6f47; text-decoration: none;">Discontinue Subscription</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

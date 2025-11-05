@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EmailTitle}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background-color: #fdf2f8;
+        }
+        
+        .email-wrapper {
+            max-width: 620px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(219, 39, 119, 0.12);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #be185d 0%, #db2777 50%, #ec4899 100%);
+            padding: 55px 45px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .ornament {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .logo {
+            font-size: 38px;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        
+        .header-subtitle {
+            color: #fce7f3;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .content {
+            padding: 50px 45px;
+        }
+        
+        .date-badge {
+            text-align: center;
+            color: #be185d;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+        }
+        
+        .greeting {
+            font-size: 28px;
+            font-weight: 400;
+            color: #be185d;
+            margin-bottom: 30px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .message {
+            font-size: 17px;
+            color: #4b5563;
+            margin-bottom: 30px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+        
+        .featured-box {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            border-left: 4px solid #db2777;
+            border-right: 4px solid #db2777;
+            padding: 35px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .featured-ornament {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .featured-label {
+            font-size: 11px;
+            color: #9f1239;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+        }
+        
+        .featured-value {
+            font-size: 42px;
+            font-weight: 400;
+            color: #be185d;
+            font-style: italic;
+        }
+        
+        .info-section {
+            margin: 40px 0;
+            border-top: 1px solid #f3f4f6;
+            border-bottom: 1px solid #f3f4f6;
+            padding: 30px 0;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px dotted #e5e7eb;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-size: 14px;
+            color: #6b7280;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .info-value {
+            font-size: 16px;
+            color: #1f2937;
+            font-weight: 600;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, #be185d 0%, #db2777 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 0 6px 20px rgba(219, 39, 119, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(219, 39, 119, 0.4);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 45px 0;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #db2777;
+            font-size: 24px;
+        }
+        
+        .footer {
+            background-color: #831843;
+            padding: 45px;
+            text-align: center;
+            color: #fce7f3;
+        }
+        
+        .footer-logo {
+            font-size: 26px;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .social-links {
+            margin: 30px 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(252, 231, 243, 0.2);
+        }
+        
+        .social-link {
+            display: inline-block;
+            margin: 0 15px;
+            color: #fbcfe8;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+        }
+        
+        .social-link:hover {
+            color: #ffffff;
+        }
+        
+        .small-text {
+            font-size: 11px;
+            color: #fbcfe8;
+            margin-top: 25px;
+            line-height: 1.8;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .content, .header, .footer {
+                padding: 30px 25px;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .info-value {
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="ornament">✦</div>
+            <div class="logo">{{CompanyName}}</div>
+            <div class="header-subtitle">{{CompanyTagline}}</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="date-badge">Newsletter</div>
+            
+            <div class="greeting">
+                Dearest {{CustomerName}},
+            </div>
+            
+            <div class="message">
+                {{MainMessage}}
+            </div>
+            
+            <!-- Featured Box -->
+            <div class="featured-box">
+                <div class="featured-ornament">◆</div>
+                <div class="featured-label">{{HighlightLabel}}</div>
+                <div class="featured-value">{{HighlightValue}}</div>
+            </div>
+            
+            <!-- Information Section -->
+            <div class="info-section">
+                <div class="info-item">
+                    <span class="info-label">{{Field1Label}}</span>
+                    <span class="info-value">{{Field1Value}}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">{{Field2Label}}</span>
+                    <span class="info-value">{{Field2Value}}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">{{Field3Label}}</span>
+                    <span class="info-value">{{Field3Value}}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">{{Field4Label}}</span>
+                    <span class="info-value">{{Field4Value}}</span>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="button-container">
+                <a href="{{ButtonLink}}" class="button">{{ButtonText}}</a>
+            </div>
+            
+            <div class="divider">❖</div>
+            
+            <!-- Additional Message -->
+            <div class="message">
+                {{SecondaryMessage}}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">{{CompanyName}}</div>
+            <div class="footer-text">
+                {{CompanyAddress}}<br>
+                {{CompanyPhone}} | {{CompanyEmail}}
+            </div>
+            
+            <div class="social-links">
+                <a href="{{WebsiteUrl}}" class="social-link">Website</a>
+                <a href="{{FacebookUrl}}" class="social-link">Facebook</a>
+                <a href="{{TwitterUrl}}" class="social-link">Twitter</a>
+                <a href="{{LinkedInUrl}}" class="social-link">LinkedIn</a>
+            </div>
+            
+            <div class="small-text">
+                {{DisclaimerText}}<br>
+                <a href="{{UnsubscribeLink}}" style="color: #fbcfe8; text-decoration: none;">Unsubscribe from our newsletter</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
