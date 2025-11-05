@@ -1,6 +1,8 @@
 ﻿using Resend;
 using TestResend.Components;
 using TestResend.Services;
+using TestResend.Services.Bravo;
+using TestResend.Services.Resend;
 
 namespace TestResend
 {

@@ -84,7 +84,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
@@ -98,19 +98,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-31T13:20:02.731Z",
               "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExampleUsage.cs",
-              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
-              "RelativeDocumentMoniker": "Templates\\ExampleUsage.cs",
-              "ToolTip": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
-              "RelativeToolTip": "Templates\\ExampleUsage.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T04:57:12.174Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -163,6 +150,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExampleUsage.cs",
+              "DocumentMoniker": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
+              "RelativeDocumentMoniker": "Templates\\ExampleUsage.cs",
+              "ToolTip": "C:\\Desarrollo\\TestResend\\Templates\\ExampleUsage.cs",
+              "RelativeToolTip": "Templates\\ExampleUsage.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T04:57:12.174Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -320,7 +320,8 @@
               "RelativeToolTip": "Components\\Pages\\SendEmail.razor",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAD8AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-31T13:12:36.901Z"
+              "WhenOpened": "2025-10-31T13:12:36.901Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -368,7 +369,8 @@
               "RelativeToolTip": "Services\\BravoEmailService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAACIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T23:13:54.489Z"
+              "WhenOpened": "2025-10-31T23:13:54.489Z",
+              "EditorCaption": ""
             }
           ]
         }
