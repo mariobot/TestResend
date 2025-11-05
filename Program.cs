@@ -44,7 +44,7 @@ namespace TestResend
             builder.Services.AddTransient<ResendEmailServiceV2>();
             builder.Services.AddTransient<ResendEmailServiceFactory>();
             builder.Services.AddTransient<IResendEmailServiceV4, ResendEmailServiceV4>();
-            
+
             // Register Brevo Email Service implementations
             builder.Services.AddTransient<IBravoEmailService, BravoEmailServiceV3>();
             builder.Services.AddTransient<BravoEmailServiceV2>();
@@ -56,6 +56,9 @@ namespace TestResend
 
             // Requister Twilio SendGrid Email Service
             builder.Services.AddTransient<TwilitoEmailService>();
+
+            // Register API Key Configuration Service
+            builder.Services.AddSingleton<ApiKeyConfigurationService>();
 
             // Register the Bridge
             // Register BridgeApp

@@ -1,0 +1,284 @@
+@page "/ApiConfiguration"
+@using TestResend.Services
+@rendermode InteractiveServer
+
+@inject ApiKeyConfigurationService ApiKeyService
+
+<h3>API Key Configuration</h3>
+
+<div class="alert alert-warning">
+    <strong>⚠️ Security Notice:</strong> This page should be protected with authentication in production. 
+    API keys are sensitive credentials.
+</div>
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @message
+    </div>
+}
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h4>Current Status</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Provider</th>
+                    <th>Status</th>
+                    <th>Last 4 Characters</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var status in keyStatus)
+                {
+                    <tr>
+                        <td>@status.Key</td>
+                        <td>
+                            @if (status.Value)
+                            {
+                                <span class="badge bg-success">✓ Configured</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">✗ Not Configured</span>
+                            }
+                        </td>
+                        <td>
+                            @if (status.Value)
+                            {
+                                <code>****@GetLastFourChars(status.Key)</code>
+                            }
+                            else
+                            {
+                                <em>N/A</em>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<EditForm Model="configModel" OnValidSubmit="UpdateConfiguration" FormName="ApiConfigForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <strong>Resend</strong>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="resendKey" class="form-label">API Key:</label>
+                        <InputText id="resendKey" type="password" class="form-control" 
+                                   @bind-Value="configModel.ResendApiKey" 
+                                   placeholder="re_xxxxxxxxxxxxx" />
+                    </div>
+                    <button type="button" class="btn btn-sm btn-secondary" @onclick="() => ToggleVisibility(ref showResendKey)">
+                        @(showResendKey ? "Hide" : "Show")
+                    </button>
+                    @if (showResendKey && !string.IsNullOrEmpty(configModel.ResendApiKey))
+                    {
+                        <div class="mt-2">
+                            <code>@configModel.ResendApiKey</code>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <strong>Brevo (formerly Sendinblue)</strong>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="bravoKey" class="form-label">API Key:</label>
+                        <InputText id="bravoKey" type="password" class="form-control" 
+                                   @bind-Value="configModel.BravoApiKey" 
+                                   placeholder="xkeysib-xxxxxxxxxxxxx" />
+                    </div>
+                    <button type="button" class="btn btn-sm btn-secondary" @onclick="() => ToggleVisibility(ref showBravoKey)">
+                        @(showBravoKey ? "Hide" : "Show")
+                    </button>
+                    @if (showBravoKey && !string.IsNullOrEmpty(configModel.BravoApiKey))
+                    {
+                        <div class="mt-2">
+                            <code>@configModel.BravoApiKey</code>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <strong>Twilio SendGrid</strong>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="twilioKey" class="form-label">API Key:</label>
+                        <InputText id="twilioKey" type="password" class="form-control" 
+                                   @bind-Value="configModel.TwilioApiKey" 
+                                   placeholder="SG.xxxxxxxxxxxxx" />
+                    </div>
+                    <button type="button" class="btn btn-sm btn-secondary" @onclick="() => ToggleVisibility(ref showTwilioKey)">
+                        @(showTwilioKey ? "Hide" : "Show")
+                    </button>
+                    @if (showTwilioKey && !string.IsNullOrEmpty(configModel.TwilioApiKey))
+                    {
+                        <div class="mt-2">
+                            <code>@configModel.TwilioApiKey</code>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <strong>Mailchimp/Mandrill</strong>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="mailchimpKey" class="form-label">API Key:</label>
+                        <InputText id="mailchimpKey" type="password" class="form-control" 
+                                   @bind-Value="configModel.MailchimpApiKey" 
+                                   placeholder="xxxxxxxxxxxxx-us1" />
+                    </div>
+                    <button type="button" class="btn btn-sm btn-secondary" @onclick="() => ToggleVisibility(ref showMailchimpKey)">
+                        @(showMailchimpKey ? "Hide" : "Show")
+                    </button>
+                    @if (showMailchimpKey && !string.IsNullOrEmpty(configModel.MailchimpApiKey))
+                    {
+                        <div class="mt-2">
+                            <code>@configModel.MailchimpApiKey</code>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-secondary" @onclick="LoadCurrentConfiguration">
+            Reload Current Values
+        </button>
+        <button type="submit" class="btn btn-primary" disabled="@isLoading">
+            @if (isLoading)
+            {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                <span>Updating...</span>
+            }
+            else
+            {
+                <span>Update Configuration</span>
+            }
+        </button>
+    </div>
+</EditForm>
+
+@code {
+    private ConfigurationModel configModel = new();
+    private bool? success;
+    private string message = string.Empty;
+    private bool isLoading = false;
+    private Dictionary<string, bool> keyStatus = new();
+
+    private bool showResendKey = false;
+    private bool showBravoKey = false;
+    private bool showTwilioKey = false;
+    private bool showMailchimpKey = false;
+
+    protected override void OnInitialized()
+    {
+        LoadCurrentConfiguration();
+        UpdateKeyStatus();
+    }
+
+    private void LoadCurrentConfiguration()
+    {
+        configModel.ResendApiKey = ApiKeyService.GetResendApiKey();
+        configModel.BravoApiKey = ApiKeyService.GetBravoApiKey();
+        configModel.TwilioApiKey = ApiKeyService.GetTwilioApiKey();
+        configModel.MailchimpApiKey = ApiKeyService.GetMailchimpApiKey();
+        UpdateKeyStatus();
+    }
+
+    private void UpdateKeyStatus()
+    {
+        keyStatus = ApiKeyService.GetKeyStatus();
+    }
+
+    private string GetLastFourChars(string provider)
+    {
+        var key = provider switch
+        {
+            "Resend" => ApiKeyService.GetResendApiKey(),
+            "Bravo" => ApiKeyService.GetBravoApiKey(),
+            "Twilio" => ApiKeyService.GetTwilioApiKey(),
+            "Mailchimp" => ApiKeyService.GetMailchimpApiKey(),
+            _ => string.Empty
+        };
+
+        return key.Length >= 4 ? key.Substring(key.Length - 4) : "****";
+    }
+
+    private void ToggleVisibility(ref bool visibility)
+    {
+        visibility = !visibility;
+    }
+
+    private async Task UpdateConfiguration()
+    {
+        isLoading = true;
+        success = null;
+
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(configModel.ResendApiKey))
+                ApiKeyService.UpdateResendApiKey(configModel.ResendApiKey);
+
+            if (!string.IsNullOrWhiteSpace(configModel.BravoApiKey))
+                ApiKeyService.UpdateBravoApiKey(configModel.BravoApiKey);
+
+            if (!string.IsNullOrWhiteSpace(configModel.TwilioApiKey))
+                ApiKeyService.UpdateTwilioApiKey(configModel.TwilioApiKey);
+
+            if (!string.IsNullOrWhiteSpace(configModel.MailchimpApiKey))
+                ApiKeyService.UpdateMailchimpApiKey(configModel.MailchimpApiKey);
+
+            UpdateKeyStatus();
+            success = true;
+            message = "API keys updated successfully! Changes will take effect immediately.";
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            message = $"Error updating configuration: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+
+        await Task.Delay(100); // Small delay to ensure UI updates
+    }
+
+    public class ConfigurationModel
+    {
+        public string ResendApiKey { get; set; } = string.Empty;
+        public string BravoApiKey { get; set; } = string.Empty;
+        public string TwilioApiKey { get; set; } = string.Empty;
+        public string MailchimpApiKey { get; set; } = string.Empty;
+    }
+}
