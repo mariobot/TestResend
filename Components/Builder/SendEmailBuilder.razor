@@ -1,0 +1,82 @@
+﻿@page "/SendEmailBuilder"
+@using TestResend.Components.Layout
+@using TestResend.Services.Resend
+@using TestResend.Bridge
+@using Components.Layout
+
+@inject BridgeApp BridgeApp
+
+<h3>SendEmail</h3>
+
+<EmailProvider @bind-SelectedProvider="selectedProvider" />
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? "Email sent successfully!" : "Failed to send email.")
+    </div>
+}
+
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" FormName="SendEmailForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="from" class="form-label">From:</label>
+        <InputText id="from" class="form-control" @bind-Value="emailModel.From" />
+    </div>
+    <div class="mb-3">
+        <label for="to" class="form-label">To:</label>
+        <InputText id="to" class="form-control" @bind-Value="emailModel.To" />
+    </div>
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject:</label>
+        <InputText id="subject" class="form-control" @bind-Value="emailModel.Subject" />
+    </div>
+    <div class="mb-3">
+        <label for="body" class="form-label">Body:</label>
+        <InputTextArea id="body" class="form-control" @bind-Value="emailModel.Body" />
+    </div>
+    <button type="submit" class="btn btn-primary">Send Test Email</button>
+</EditForm>
+
+<div>
+    <div class="active">
+        <p>@message</p>
+    </div>
+</div>
+
+@code {
+    private EmailModel emailModel = new();
+    private bool? success;
+    private string message = string.Empty;
+    private string selectedProvider = "Resend";
+
+    public class EmailModel
+    {
+        public string From { get; set; } = "mariobot113@hotmail.com";
+        public string To { get; set; } = "mariobot113@hotmail.com";
+        public string Subject { get; set; } = "Bienvenido";
+        public string Body { get; set; } = "Bienvenido a la Plataforma TestResend";
+    }
+
+    private async Task SendEmailAsync()
+    {
+        try
+        {
+            success = await BridgeApp.SendEmailAsync(
+                selectedProvider,
+                emailModel.From,
+                emailModel.To,
+                emailModel.Subject,
+                emailModel.Body
+            );
+            message = success == true ? "Email sent successfully." : "Failed to send email.";
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            message = ex.Message;
+        }
+    }
+}

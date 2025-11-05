@@ -1,0 +1,194 @@
+@page "/TemplateEmailBuilder"
+
+@using TestResend.Bridge
+@using Components.Layout
+@using TestResend.Components.Layout
+@using TestResend.Services
+
+@inject BridgeApp BridgeApp
+
+<PageTitle>Email Template Builder</PageTitle>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mb-4">📧 Professional Email Template Builder</h1>
+            <p class="text-muted">Fill in the form below to create and send a professional email</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Form Column -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Email Details</h5>
+                </div>
+                <div class="card-body">
+                    <EmailProvider @bind-SelectedProvider="selectedProvider" />
+
+                    <EditForm Model="@templateData" OnValidSubmit="@HandleSendEmail">
+                        <!-- ... (rest of your form unchanged) ... -->
+                        <!-- All your form fields remain the same -->
+                        <div class="d-grid gap-2">
+                            <button type="button" @onclick="GeneratePreview" class="btn btn-info btn-lg" disabled="@isProcessing">
+                                <span class="@(isProcessing ? "spinner-border spinner-border-sm me-2" : "")"></span>
+                                👁️ Preview Email
+                            </button>
+                            <button type="submit" class="btn btn-success btn-lg" disabled="@isProcessing">
+                                <span class="@(isProcessing ? "spinner-border spinner-border-sm me-2" : "")"></span>
+                                📤 Send Email
+                            </button>
+                        </div>
+                    </EditForm>
+
+                    @if (!string.IsNullOrEmpty(statusMessage))
+                    {
+                        <div class="alert @(isError ? "alert-danger" : "alert-success") mt-3" role="alert">
+                            @statusMessage
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Column -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">📱 Email Preview</h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (!string.IsNullOrEmpty(previewHtml))
+                    {
+                        <iframe srcdoc="@previewHtml" style="width: 100%; height: 600px; border: none;"></iframe>
+                    }
+                    else
+                    {
+                        <div class="p-5 text-center text-muted">
+                            <p>Click "Preview Email" to see how your email will look</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private EmailTemplateData templateData = new EmailTemplateData
+    {
+        CompanyName = "Your Company",
+        CompanyTagline = "Your Tagline Here",
+        CustomerName = "John Doe",
+        MainMessage = "This is your main message to the customer.",
+        HighlightLabel = "Order Number",
+        HighlightValue = "#12345",
+        Field1Label = "Date",
+        Field1Value = DateTime.Now.ToString("MMMM dd, yyyy"),
+        Field2Label = "Status",
+        Field2Value = "Confirmed",
+        Field3Label = "Amount",
+        Field3Value = "$99.99",
+        Field4Label = "Payment Method",
+        Field4Value = "Credit Card",
+        ButtonText = "View Details",
+        ButtonLink = "https://example.com",
+        SecondaryMessage = "Thank you for choosing us!",
+        CompanyAddress = "123 Main Street, City, Country",
+        CompanyPhone = "+1 234 567 890",
+        CompanyEmail = "info@company.com",
+        WebsiteUrl = "https://yourcompany.com",
+        DisclaimerText = "This email was sent because you are subscribed to our service."
+    };
+
+    private string selectedTemplate = "ProfessionalEmail";
+    private string fromEmail = "onboarding@resend.dev";
+    private string toEmail = "";
+    private string subject = "Professional Email";
+    private string previewHtml = "";
+    private string statusMessage = "";
+    private bool isError = false;
+    private bool isProcessing = false;
+    private bool isLoadingTemplate = false;
+    private string selectedProvider = "Resend";
+
+    private EmailTemplateService templateService = new EmailTemplateService();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GeneratePreview();
+    }
+
+    private async Task OnTemplateChanged()
+    {
+        isLoadingTemplate = true;
+        try
+        {
+            await GeneratePreview();
+        }
+        finally
+        {
+            isLoadingTemplate = false;
+        }
+    }
+
+    private async Task GeneratePreview()
+    {
+        try
+        {
+            var template = await templateService.LoadTemplateAsync(selectedTemplate);
+            previewHtml = templateService.PopulateTemplate(template, templateData);
+            statusMessage = "";
+            isError = false;
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Preview error: {ex.Message}";
+            isError = true;
+        }
+    }
+
+    private async Task HandleSendEmail()
+    {
+        isProcessing = true;
+        isError = false;
+        statusMessage = "";
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(toEmail))
+            {
+                statusMessage = "Please enter a recipient email address.";
+                isError = true;
+                return;
+            }
+
+            var template = await templateService.LoadTemplateAsync(selectedTemplate);
+            var html = templateService.PopulateTemplate(template, templateData);
+
+            // Use BridgeApp to send via selected provider
+            var success = await BridgeApp.SendEmailAsync(
+                selectedProvider,
+                fromEmail,
+                toEmail,
+                subject,
+                html
+            );
+
+            statusMessage = success
+                ? $"✅ Email sent successfully!"
+                : $"❌ Failed to send email.";
+            isError = !success;
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"❌ Error sending email: {ex.Message}";
+            isError = true;
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+}

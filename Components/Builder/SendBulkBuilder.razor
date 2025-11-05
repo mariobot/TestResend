@@ -1,0 +1,121 @@
+@page "/SendBulkBuilder"
+@using TestResend.Bridge
+@using Components.Layout
+@using TestResend.Components.Layout
+
+@inject BridgeApp BridgeApp
+
+<h3>Send Bulk Email</h3>
+
+<EmailProvider @bind-SelectedProvider="selectedProvider" />
+
+@if (success.HasValue)
+{
+    <div class="alert @(success.Value ? "alert-success" : "alert-danger")">
+        @(success.Value ? $"Bulk email sent successfully to {recipientCount} recipients!" : $"Failed to send email: {errorMessage}")
+    </div>
+}
+
+<EditForm Model="emailModel" OnValidSubmit="SendEmailAsync" FormName="SendBulkForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="from" class="form-label">From:</label>
+        <InputText id="from" class="form-control" @bind-Value="emailModel.From" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="recipients" class="form-label">Recipients (one per line):</label>
+        <InputTextArea id="recipients" class="form-control" rows="6" @bind-Value="emailModel.Recipients" 
+                       placeholder="email1@example.com&#10;email2@example.com&#10;email3@example.com" />
+        <small class="text-muted">Enter one email address per line</small>
+    </div>
+    
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject:</label>
+        <InputText id="subject" class="form-control" @bind-Value="emailModel.Subject" />
+    </div>
+    
+    <div class="mb-3">
+        <label for="body" class="form-label">Body (HTML):</label>
+        <InputTextArea id="body" class="form-control" rows="8" @bind-Value="emailModel.Body" />
+    </div>
+
+    <div class="alert alert-info">
+        <strong>Note:</strong> All recipients will receive the same email. For personalized emails, use the templated email feature.
+    </div>
+
+    <button type="submit" class="btn btn-primary" disabled="@isLoading">
+        @if (isLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Sending...</span>
+        }
+        else
+        {
+            <span>Send to All Recipients</span>
+        }
+    </button>
+</EditForm>
+
+@code {
+    private BulkEmailModel emailModel = new();
+    private bool? success;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+    private int recipientCount = 0;
+    private string selectedProvider = "Resend";
+
+    public class BulkEmailModel
+    {
+        public string From { get; set; } = "mariobot113@hotmail.com";
+        public string Recipients { get; set; } = "mariobot113@hotmail.com\nrecipient2@example.com\nrecipient3@example.com";
+        public string Subject { get; set; } = "Important Announcement";
+        public string Body { get; set; } = "<h2>Hello!</h2><p>This is a bulk email sent to multiple recipients.</p>";
+    }
+
+    private async Task SendEmailAsync()
+    {
+        isLoading = true;
+        success = null;
+
+        try
+        {
+            // Parse recipients
+            var recipients = emailModel.Recipients
+                .Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(email => email.Trim())
+                .Where(email => !string.IsNullOrWhiteSpace(email))
+                .ToList();
+
+            if (recipients.Count == 0)
+            {
+                errorMessage = "Please enter at least one recipient email address.";
+                success = false;
+                return;
+            }
+
+            recipientCount = recipients.Count;
+
+            success = await BridgeApp.SendBulkEmailAsync(
+                selectedProvider,
+                emailModel.From,
+                recipients,
+                emailModel.Subject,
+                emailModel.Body
+            );
+
+            errorMessage = success == true ? string.Empty : "Bulk email failed to send.";
+        }
+        catch (Exception ex)
+        {
+            success = false;
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
